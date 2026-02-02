@@ -62,6 +62,10 @@ export function LandingHero() {
           0% { opacity: 0.3; }
           100% { opacity: 0.6; }
         }
+        @keyframes float-card {
+          0%, 100% { transform: translateY(0); }
+          50% { transform: translateY(-8px); }
+        }
       `}</style>
       
       <div className="mx-auto max-w-7xl px-4 py-16 lg:px-6 lg:py-24">
@@ -167,13 +171,6 @@ export function LandingHero() {
               </div>
             </div>
 
-            {/* Add floating card animation */}
-            <style jsx>{`
-              @keyframes float-card {
-                0%, 100% { transform: translateY(0); }
-                50% { transform: translateY(-8px); }
-              }
-            `}</style>
           </div>
         </div>
       </div>
