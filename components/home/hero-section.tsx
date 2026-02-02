@@ -10,19 +10,19 @@ import { cn } from "@/lib/utils";
 const slides = [
   {
     id: 1,
-    image: "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=1200&h=600&fit=crop",
+    image: "/images/ipad-devices.png",
     title: "Tecnología que impulsa empresas sin límites",
     subtitle: "En MacPower IT Solutions transformamos la forma en que las organizaciones operan, conectan y se protegen.",
   },
   {
     id: 2,
-    image: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=1200&h=600&fit=crop",
+    image: "/images/ipad-devices.png",
     title: "Mac para empresas, listo para TI",
     subtitle: "Despliegue zero-touch, gestión centralizada y seguridad de nivel empresarial desde el primer día.",
   },
   {
     id: 3,
-    image: "https://images.unsplash.com/photo-1553877522-43269d4ea984?w=1200&h=600&fit=crop",
+    image: "/images/ipad-devices.png",
     title: "Soluciones IT que aceleran tu negocio",
     subtitle: "Más de 15 años especializados en ecosistema Apple corporativo con presencia en 5 países.",
   },
@@ -63,11 +63,11 @@ export function HeroSection() {
           src="/images/circuit-background.png"
           alt="Circuit board background"
           fill
-          className="object-cover opacity-60"
+          className="object-cover"
           priority
         />
-        {/* Dark overlay to ensure readability */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/70" />
+        {/* Subtle overlay for text readability without degrading the background */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/20 to-black/40" />
       </div>
 
       {/* Glassmorphism Layer - Frosted separation */}
@@ -187,17 +187,11 @@ export function HeroSection() {
                     src={slide.image || "/placeholder.svg"}
                     alt={slide.title}
                     fill
-                    className="object-cover"
+                    className="object-contain p-8"
                     priority={index === 0}
-                    style={{ 
-                      filter: 'contrast(0.95) saturate(0.9)',
-                    }}
                   />
-                  {/* Subtle vignette for depth */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-black/20" />
-                  
-                  {/* Soft shadow only - no glow on product */}
-                  <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-black/60 to-transparent" />
+                  {/* Very subtle shadow only - no overlays to preserve product clarity */}
+                  <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/20 to-transparent" />
                 </div>
               ))}
               
