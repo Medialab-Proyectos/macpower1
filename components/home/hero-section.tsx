@@ -66,19 +66,9 @@ export function HeroSection() {
           className="object-cover"
           priority
         />
-        {/* Subtle overlay for text readability without degrading the background */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/20 to-black/40" />
-      </div>
-
-      {/* Glassmorphism Layer - Frosted separation */}
-      <div className="pointer-events-none absolute inset-0">
-        <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/30 backdrop-blur-[0.5px]" />
       </div>
       
-      {/* Content container with glass effect */}
       <div className="relative mx-auto max-w-7xl px-4 py-12 lg:px-6 lg:py-20">
-        {/* Subtle frosted glass panel behind content */}
-        <div className="pointer-events-none absolute inset-0 rounded-3xl border border-white/[0.02] bg-white/[0.01] backdrop-blur-sm" />
         
         <div className="relative z-10 grid items-center gap-8 lg:grid-cols-2 lg:gap-12">
           {/* Content */}
