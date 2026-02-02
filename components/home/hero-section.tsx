@@ -57,86 +57,22 @@ export function HeroSection() {
 
   return (
     <section className="relative overflow-hidden bg-black">
-      {/* Abstract Circuit Background - Silicon/Motherboard inspired */}
+      {/* Circuit Board Background Image */}
       <div className="pointer-events-none absolute inset-0">
-        {/* Base deep black layer */}
-        <div className="absolute inset-0 bg-gradient-to-br from-black via-gray-950 to-black" />
-        
-        {/* Abstract circuit trace paths - highly blurred */}
-        <div className="absolute inset-0 opacity-20">
-          {/* Horizontal traces */}
-          <div 
-            className="absolute left-0 top-[20%] h-px w-full blur-xl"
-            style={{ 
-              background: 'linear-gradient(90deg, transparent, rgba(34, 197, 94, 0.15) 20%, rgba(34, 197, 94, 0.25) 50%, rgba(34, 197, 94, 0.15) 80%, transparent)',
-            }}
-          />
-          <div 
-            className="absolute left-0 top-[45%] h-px w-full blur-xl"
-            style={{ 
-              background: 'linear-gradient(90deg, transparent, rgba(34, 197, 94, 0.1) 30%, rgba(34, 197, 94, 0.2) 60%, transparent)',
-            }}
-          />
-          <div 
-            className="absolute left-0 top-[70%] h-px w-full blur-xl"
-            style={{ 
-              background: 'linear-gradient(90deg, rgba(34, 197, 94, 0.12) 10%, transparent 40%, rgba(34, 197, 94, 0.18) 70%, transparent)',
-            }}
-          />
-          
-          {/* Vertical traces */}
-          <div 
-            className="absolute left-[25%] top-0 h-full w-px blur-xl"
-            style={{ 
-              background: 'linear-gradient(180deg, transparent, rgba(34, 197, 94, 0.12) 30%, rgba(34, 197, 94, 0.18) 50%, transparent 80%)',
-            }}
-          />
-          <div 
-            className="absolute left-[60%] top-0 h-full w-px blur-xl"
-            style={{ 
-              background: 'linear-gradient(180deg, rgba(34, 197, 94, 0.15) 20%, transparent 50%, rgba(34, 197, 94, 0.12) 80%)',
-            }}
-          />
-        </div>
-
-        {/* Microchip connection nodes - soft green energy points */}
-        <div className="absolute inset-0 opacity-30">
-          <div 
-            className="absolute left-[20%] top-[25%] h-24 w-24 rounded-full blur-2xl"
-            style={{ background: 'radial-gradient(circle, rgba(34, 197, 94, 0.2), transparent 70%)' }}
-          />
-          <div 
-            className="absolute right-[30%] top-[40%] h-32 w-32 rounded-full blur-2xl"
-            style={{ background: 'radial-gradient(circle, rgba(34, 197, 94, 0.15), transparent 70%)' }}
-          />
-          <div 
-            className="absolute left-[50%] bottom-[30%] h-28 w-28 rounded-full blur-2xl"
-            style={{ background: 'radial-gradient(circle, rgba(34, 197, 94, 0.18), transparent 70%)' }}
-          />
-        </div>
-
-        {/* Ambient light from circuit activity - very subtle pulse */}
-        <div 
-          className="absolute inset-0 opacity-40"
-          style={{ 
-            background: 'radial-gradient(ellipse 80% 50% at 30% 40%, rgba(34, 197, 94, 0.08), transparent 60%)',
-            animation: 'pulse-slow 8s ease-in-out infinite'
-          }}
+        <Image
+          src="/images/circuit-background.png"
+          alt="Circuit board background"
+          fill
+          className="object-cover opacity-60"
+          priority
         />
-        
-        {/* Silicon surface texture simulation */}
-        <div 
-          className="absolute inset-0 opacity-[0.02]"
-          style={{
-            backgroundImage: 'repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(255,255,255,0.03) 2px, rgba(255,255,255,0.03) 4px), repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(255,255,255,0.03) 2px, rgba(255,255,255,0.03) 4px)',
-            backgroundSize: '100px 100px'
-          }}
-        />
+        {/* Dark overlay to ensure readability */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/70" />
       </div>
 
       {/* Glassmorphism Layer - Frosted separation */}
       <div className="pointer-events-none absolute inset-0">
-        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/60 backdrop-blur-[0.5px]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/30 backdrop-blur-[0.5px]" />
       </div>
       
       {/* Content container with glass effect */}
