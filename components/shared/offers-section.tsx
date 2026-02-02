@@ -140,9 +140,36 @@ function OfferCard({ offer, onClick }: { offer: Offer; onClick: () => void }) {
 
   return (
     <div 
-      className="group relative bg-card rounded-xl border border-border p-6 hover:border-primary/50 transition-all cursor-pointer"
+      className="group relative bg-card rounded-xl border border-border p-6 cursor-pointer transition-all duration-300 ease-out hover:-translate-y-1"
       onClick={onClick}
+      style={{
+        boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
+      }}
     >
+      {/* Gradient border on hover */}
+      <div className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
+        style={{
+          background: 'linear-gradient(135deg, rgba(34, 197, 94, 0.4) 0%, rgba(14, 165, 233, 0.4) 100%)',
+          padding: '1px',
+          WebkitMask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
+          WebkitMaskComposite: 'xor',
+          maskComposite: 'exclude'
+        }}
+      />
+      
+      {/* Subtle green-teal glow on hover */}
+      <div className="absolute -inset-1 rounded-xl opacity-0 group-hover:opacity-30 blur-xl transition-opacity duration-300 pointer-events-none"
+        style={{
+          background: 'radial-gradient(circle at center, rgba(34, 197, 94, 0.3) 0%, rgba(14, 165, 233, 0.2) 50%, transparent 70%)'
+        }}
+      />
+      
+      {/* Enhanced shadow on hover */}
+      <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
+        style={{
+          boxShadow: '0 20px 25px -5px rgba(34, 197, 94, 0.1), 0 10px 10px -5px rgba(14, 165, 233, 0.08)'
+        }}
+      />
       {/* Badge */}
       {offer.badge && (
         <Badge 

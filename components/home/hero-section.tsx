@@ -65,8 +65,8 @@ export function HeroSection() {
           fill
           className="object-cover"
           style={{
-            filter: 'blur(24px) saturate(85%) contrast(90%)',
-            opacity: 0.55
+            filter: 'blur(0.1px) saturate(98%) contrast(98%)',
+            opacity: 1
           }}
           priority
         />
