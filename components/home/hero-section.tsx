@@ -128,23 +128,15 @@ export function HeroSection() {
         <div 
           className="absolute inset-0 opacity-[0.02]"
           style={{
-            backgroundImage: `
-              repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(255,255,255,0.03) 2px, rgba(255,255,255,0.03) 4px),
-              repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(255,255,255,0.03) 2px, rgba(255,255,255,0.03) 4px)
-            `,
-            backgroundSize: '100px 100px',
+            backgroundImage: 'repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(255,255,255,0.03) 2px, rgba(255,255,255,0.03) 4px), repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(255,255,255,0.03) 2px, rgba(255,255,255,0.03) 4px)',
+            backgroundSize: '100px 100px'
           }}
         />
       </div>
 
       {/* Glassmorphism Layer - Frosted separation */}
-      <div className="pointer-events-none absolute inset-0 backdrop-blur-[1px]">
-        <div 
-          className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/60"
-          style={{ 
-            backdropFilter: 'blur(0.5px)',
-          }}
-        />
+      <div className="pointer-events-none absolute inset-0">
+        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/60 backdrop-blur-[0.5px]" />
       </div>
       
       {/* Content container with glass effect */}
