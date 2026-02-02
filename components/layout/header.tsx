@@ -116,32 +116,13 @@ export function Header() {
 
           <ThemeToggle />
 
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button
-                variant="ghost"
-                size="sm"
-                className="hidden text-xs lg:flex"
-              >
-                <span className="flex items-center gap-1">
-                  <span className="text-lg">🇨🇴</span>
-                  Colombia
-                  <ChevronDown className="h-3 w-3" />
-                </span>
-              </Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent align="end" className="bg-card border-border">
-              <DropdownMenuItem>
-                <span className="mr-2">🇨🇴</span> Colombia
-              </DropdownMenuItem>
-              <DropdownMenuItem>
-                <span className="mr-2">🇲🇽</span> México
-              </DropdownMenuItem>
-              <DropdownMenuItem>
-                <span className="mr-2">🇵🇪</span> Perú
-              </DropdownMenuItem>
-            </DropdownMenuContent>
-          </DropdownMenu>
+          <Button
+            asChild
+            size="sm"
+            className="hidden lg:flex bg-gradient-to-r from-green-600 to-cyan-600 hover:from-green-700 hover:to-cyan-700 text-white border-0"
+          >
+            <Link href="#contacto">Contáctanos</Link>
+          </Button>
 
           {/* Mobile menu */}
           <Sheet open={mobileOpen} onOpenChange={setMobileOpen}>
