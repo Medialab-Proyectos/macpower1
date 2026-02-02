@@ -64,7 +64,18 @@ export function HeroSection() {
           alt="Circuit board background"
           fill
           className="object-cover"
+          style={{
+            filter: 'blur(24px) saturate(85%) contrast(90%)',
+            opacity: 0.55
+          }}
           priority
+        />
+        {/* Left gradient overlay */}
+        <div 
+          className="absolute inset-0"
+          style={{
+            background: 'linear-gradient(90deg, rgba(5,7,8,0.95) 0%, rgba(5,7,8,0.85) 30%, rgba(5,7,8,0.4) 55%, rgba(5,7,8,0.0) 70%)'
+          }}
         />
       </div>
       
@@ -158,7 +169,7 @@ export function HeroSection() {
                       : "translate-x-full opacity-0"
                   )}
                 >
-                  <div className="relative h-full w-full scale-125">
+                  <div className="relative h-full w-full scale-150 -translate-x-12">
                     <Image
                       src={slide.image || "/placeholder.svg"}
                       alt={slide.title}
