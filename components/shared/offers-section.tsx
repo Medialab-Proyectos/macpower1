@@ -2,7 +2,7 @@
 
 import React from "react"
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { ArrowRight, Tag, Clock, X, Check, Gift, CreditCard, Percent } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -25,7 +25,12 @@ const iconMap: Record<string, React.ReactNode> = {
 
 export function OffersSection() {
   const [selectedOffer, setSelectedOffer] = useState<Offer | null>(null);
+  const [mounted, setMounted] = useState(false);
   const offers = getActiveOffers().slice(0, 3);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const handleOfferClick = (offer: Offer) => {
     trackEvent("promo_clicked", { promo_id: offer.id, promo_name: offer.title });
@@ -84,11 +89,11 @@ export function OffersSection() {
             {/* Validity */}
             <div className="flex items-center gap-2 text-sm text-muted-foreground">
               <Clock className="h-4 w-4" />
-              <span>Válido hasta: {selectedOffer && new Date(selectedOffer.validUntil).toLocaleDateString('es-CO', { 
+              <span>Válido hasta: {mounted && selectedOffer ? new Date(selectedOffer.validUntil).toLocaleDateString('es-CO', { 
                 year: 'numeric', 
                 month: 'long', 
                 day: 'numeric' 
-              })}</span>
+              }) : selectedOffer?.validUntil}</span>
             </div>
 
             {/* Terms */}
@@ -122,6 +127,17 @@ export function OffersSection() {
 }
 
 function OfferCard({ offer, onClick }: { offer: Offer; onClick: () => void }) {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  // Format date only on client to avoid hydration mismatch
+  const formattedDate = mounted 
+    ? new Date(offer.validUntil).toLocaleDateString('es-CO', { month: 'short', day: 'numeric' })
+    : offer.validUntil.slice(5); // Fallback to MM-DD format from ISO string
+
   return (
     <div 
       className="group relative bg-card rounded-xl border border-border p-6 hover:border-primary/50 transition-all cursor-pointer"
@@ -152,7 +168,7 @@ function OfferCard({ offer, onClick }: { offer: Offer; onClick: () => void }) {
       {/* Validity */}
       <div className="flex items-center gap-2 text-xs text-muted-foreground mb-4">
         <Clock className="h-3 w-3" />
-        <span>Hasta {new Date(offer.validUntil).toLocaleDateString('es-CO', { month: 'short', day: 'numeric' })}</span>
+        <span>Hasta {formattedDate}</span>
       </div>
 
       {/* CTA */}
