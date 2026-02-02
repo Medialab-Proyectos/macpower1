@@ -29,11 +29,20 @@ export function ApplePartnerSection() {
           <div className="lg:col-span-2">
             <div className="sticky top-24">
               <div className="mb-4 flex items-center gap-3">
-                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-secondary">
-                  <span className="text-2xl font-bold text-foreground">
-                    MAC<span className="text-primary">POWER</span>
-                  </span>
-                </div>
+                <Image
+                  src="/images/macpower-logo-color.svg"
+                  alt="MacPower"
+                  width={150}
+                  height={30}
+                  className="h-10 w-auto dark:hidden"
+                />
+                <Image
+                  src="/images/macpower-logo-white.svg"
+                  alt="MacPower"
+                  width={150}
+                  height={30}
+                  className="hidden h-10 w-auto dark:block"
+                />
                 <div className="flex items-center gap-1.5 rounded-full bg-secondary px-3 py-1 text-xs">
                   <Apple className="h-3 w-3" />
                   Business Partner

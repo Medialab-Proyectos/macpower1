@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useState, useEffect } from "react";
 import { Apple, Facebook, Twitter, Linkedin, Instagram } from "lucide-react";
 
@@ -68,9 +69,20 @@ export function Footer() {
           {/* Brand column */}
           <div className="lg:col-span-1">
             <Link href="/" className="inline-flex items-center gap-2">
-              <span className="text-xl font-bold tracking-tight text-foreground">
-                MAC<span className="text-primary">POWER</span>
-              </span>
+              <Image
+                src="/images/macpower-logo-color.svg"
+                alt="MacPower IT Solutions"
+                width={200}
+                height={40}
+                className="h-8 w-auto dark:hidden"
+              />
+              <Image
+                src="/images/macpower-logo-white.svg"
+                alt="MacPower IT Solutions"
+                width={200}
+                height={40}
+                className="hidden h-8 w-auto dark:block"
+              />
             </Link>
             <p className="mt-4 text-sm text-muted-foreground">
               Somos tu aliado para facilitar la inversión de soluciones IT que optimicen los procesos de tu empresa.

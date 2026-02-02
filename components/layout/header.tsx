@@ -26,15 +26,6 @@ const navigation = [
   { name: "Nosotros", href: "#" },
   { name: "Portafolio", href: "#portafolio" },
   {
-    name: "Valor",
-    href: "#",
-    children: [
-      { name: "Soluciones DaaS", href: "#" },
-      { name: "Soluciones Valor IT", href: "#" },
-      { name: "LabPower", href: "#" },
-    ],
-  },
-  {
     name: "Apple",
     href: "/apple",
     children: [
@@ -51,14 +42,22 @@ export function Header() {
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 lg:px-6">
-        {/* Logo - original color on light, white on dark */}
+        {/* Logo - color on light, white on dark */}
         <Link href="/" className="flex items-center">
           <Image
-            src="/images/frame-2021.png"
+            src="/images/macpower-logo-color.svg"
             alt="MacPower IT Solutions - Apple Business Partner"
             width={320}
-            height={40}
-            className="h-8 w-auto dark:brightness-0 dark:invert"
+            height={60}
+            className="h-10 w-auto dark:hidden"
+            priority
+          />
+          <Image
+            src="/images/macpower-logo-white.svg"
+            alt="MacPower IT Solutions - Apple Business Partner"
+            width={320}
+            height={60}
+            className="hidden h-10 w-auto dark:block"
             priority
           />
         </Link>
