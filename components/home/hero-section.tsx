@@ -57,60 +57,102 @@ export function HeroSection() {
 
   return (
     <section className="relative overflow-hidden bg-black">
-      {/* Mac Surface Background - Subtle abstract texture */}
-      <div className="pointer-events-none absolute inset-0 opacity-30">
-        <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-gray-950 to-black" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(30,30,40,0.4),transparent_70%)]" />
-      </div>
-
-      {/* Neon Green Energy Pulses - Very subtle, phosphorescent */}
+      {/* Abstract Circuit Background - Silicon/Motherboard inspired */}
       <div className="pointer-events-none absolute inset-0">
-        {/* Pulse 1 - Top left */}
+        {/* Base deep black layer */}
+        <div className="absolute inset-0 bg-gradient-to-br from-black via-gray-950 to-black" />
+        
+        {/* Abstract circuit trace paths - highly blurred */}
+        <div className="absolute inset-0 opacity-20">
+          {/* Horizontal traces */}
+          <div 
+            className="absolute left-0 top-[20%] h-px w-full blur-xl"
+            style={{ 
+              background: 'linear-gradient(90deg, transparent, rgba(34, 197, 94, 0.15) 20%, rgba(34, 197, 94, 0.25) 50%, rgba(34, 197, 94, 0.15) 80%, transparent)',
+            }}
+          />
+          <div 
+            className="absolute left-0 top-[45%] h-px w-full blur-xl"
+            style={{ 
+              background: 'linear-gradient(90deg, transparent, rgba(34, 197, 94, 0.1) 30%, rgba(34, 197, 94, 0.2) 60%, transparent)',
+            }}
+          />
+          <div 
+            className="absolute left-0 top-[70%] h-px w-full blur-xl"
+            style={{ 
+              background: 'linear-gradient(90deg, rgba(34, 197, 94, 0.12) 10%, transparent 40%, rgba(34, 197, 94, 0.18) 70%, transparent)',
+            }}
+          />
+          
+          {/* Vertical traces */}
+          <div 
+            className="absolute left-[25%] top-0 h-full w-px blur-xl"
+            style={{ 
+              background: 'linear-gradient(180deg, transparent, rgba(34, 197, 94, 0.12) 30%, rgba(34, 197, 94, 0.18) 50%, transparent 80%)',
+            }}
+          />
+          <div 
+            className="absolute left-[60%] top-0 h-full w-px blur-xl"
+            style={{ 
+              background: 'linear-gradient(180deg, rgba(34, 197, 94, 0.15) 20%, transparent 50%, rgba(34, 197, 94, 0.12) 80%)',
+            }}
+          />
+        </div>
+
+        {/* Microchip connection nodes - soft green energy points */}
+        <div className="absolute inset-0 opacity-30">
+          <div 
+            className="absolute left-[20%] top-[25%] h-24 w-24 rounded-full blur-2xl"
+            style={{ background: 'radial-gradient(circle, rgba(34, 197, 94, 0.2), transparent 70%)' }}
+          />
+          <div 
+            className="absolute right-[30%] top-[40%] h-32 w-32 rounded-full blur-2xl"
+            style={{ background: 'radial-gradient(circle, rgba(34, 197, 94, 0.15), transparent 70%)' }}
+          />
+          <div 
+            className="absolute left-[50%] bottom-[30%] h-28 w-28 rounded-full blur-2xl"
+            style={{ background: 'radial-gradient(circle, rgba(34, 197, 94, 0.18), transparent 70%)' }}
+          />
+        </div>
+
+        {/* Ambient light from circuit activity - very subtle pulse */}
         <div 
-          className="absolute left-0 top-0 h-[600px] w-[600px] -translate-x-1/2 -translate-y-1/2 animate-pulse-slow rounded-full blur-3xl"
+          className="absolute inset-0 opacity-40"
           style={{ 
-            background: 'radial-gradient(circle, rgba(34, 197, 94, 0.1) 0%, rgba(34, 197, 94, 0.05) 50%, transparent 100%)' 
+            background: 'radial-gradient(ellipse 80% 50% at 30% 40%, rgba(34, 197, 94, 0.08), transparent 60%)',
+            animation: 'pulse-slow 8s ease-in-out infinite'
           }}
         />
         
-        {/* Pulse 2 - Right side */}
+        {/* Silicon surface texture simulation */}
         <div 
-          className="absolute right-0 top-1/4 h-[500px] w-[500px] translate-x-1/3 rounded-full blur-3xl"
-          style={{ 
-            background: 'radial-gradient(circle, rgba(74, 222, 128, 0.08) 0%, rgba(34, 197, 94, 0.04) 50%, transparent 100%)',
-            animation: 'float 8s ease-in-out infinite' 
-          }}
-        />
-        
-        {/* Pulse 3 - Bottom center */}
-        <div 
-          className="absolute bottom-0 left-1/2 h-[400px] w-[700px] -translate-x-1/2 translate-y-1/2 rounded-full blur-3xl"
-          style={{ 
-            background: 'radial-gradient(circle, rgba(16, 185, 129, 0.06) 0%, rgba(34, 197, 94, 0.03) 50%, transparent 100%)',
-            animation: 'float 10s ease-in-out infinite 2s' 
+          className="absolute inset-0 opacity-[0.02]"
+          style={{
+            backgroundImage: `
+              repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(255,255,255,0.03) 2px, rgba(255,255,255,0.03) 4px),
+              repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(255,255,255,0.03) 2px, rgba(255,255,255,0.03) 4px)
+            `,
+            backgroundSize: '100px 100px',
           }}
         />
       </div>
 
-      {/* Animated gradient overlay - Slow movement */}
-      <div className="pointer-events-none absolute inset-0">
+      {/* Glassmorphism Layer - Frosted separation */}
+      <div className="pointer-events-none absolute inset-0 backdrop-blur-[1px]">
         <div 
-          className="absolute inset-0 bg-gradient-to-br from-green-950/20 via-transparent to-cyan-950/10"
-          style={{ animation: 'gradient-shift 15s ease-in-out infinite alternate' }}
+          className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/60"
+          style={{ 
+            backdropFilter: 'blur(0.5px)',
+          }}
         />
       </div>
-
-      {/* Subtle grid pattern for depth */}
-      <div 
-        className="pointer-events-none absolute inset-0 opacity-[0.03]"
-        style={{
-          backgroundImage: 'linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px)',
-          backgroundSize: '64px 64px'
-        }}
-      />
       
-      <div className="mx-auto max-w-7xl px-4 py-12 lg:px-6 lg:py-20">
-        <div className="grid items-center gap-8 lg:grid-cols-2 lg:gap-12">
+      {/* Content container with glass effect */}
+      <div className="relative mx-auto max-w-7xl px-4 py-12 lg:px-6 lg:py-20">
+        {/* Subtle frosted glass panel behind content */}
+        <div className="pointer-events-none absolute inset-0 rounded-3xl border border-white/[0.02] bg-white/[0.01] backdrop-blur-sm" />
+        
+        <div className="relative z-10 grid items-center gap-8 lg:grid-cols-2 lg:gap-12">
           {/* Content */}
           <div className="order-2 lg:order-1 relative z-10">
             <div className="relative">
@@ -185,10 +227,22 @@ export function HeroSection() {
 
           {/* Image carousel */}
           <div className="order-1 lg:order-2 relative z-10">
-            {/* Glow effect behind carousel */}
-            <div className="absolute inset-0 -z-10 translate-y-4 rounded-2xl bg-gradient-to-br from-green-500/20 via-cyan-500/10 to-transparent blur-2xl" />
+            {/* Subtle green glow behind carousel - circuit energy */}
+            <div className="absolute inset-0 -z-10 rounded-2xl opacity-40 blur-3xl" style={{ background: 'radial-gradient(ellipse, rgba(34, 197, 94, 0.12), transparent 70%)' }} />
             
-            <div className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-gray-900/80 to-gray-950/80 backdrop-blur-xl">
+            {/* Glassmorphic container */}
+            <div className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-white/5 bg-black/40 backdrop-blur-xl shadow-2xl">
+              {/* Frosted glass layer */}
+              <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-white/[0.02] to-transparent" />
+              
+              {/* Very subtle noise texture for glass realism */}
+              <div 
+                className="pointer-events-none absolute inset-0 opacity-[0.015]"
+                style={{
+                  backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=\'0 0 256 256\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'noise\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.9\' numOctaves=\'4\' /%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23noise)\' /%3E%3C/svg%3E")',
+                }}
+              />
+              
               {slides.map((slide, index) => (
                 <div
                   key={slide.id}
@@ -205,20 +259,22 @@ export function HeroSection() {
                     src={slide.image || "/placeholder.svg"}
                     alt={slide.title}
                     fill
-                    className="object-cover opacity-90 mix-blend-luminosity"
+                    className="object-cover"
                     priority={index === 0}
+                    style={{ 
+                      filter: 'contrast(0.95) saturate(0.9)',
+                    }}
                   />
-                  {/* Glassmorphic overlay with subtle green tint */}
-                  <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/20 to-transparent" />
-                  <div className="absolute inset-0 bg-gradient-to-br from-green-500/5 via-transparent to-cyan-500/5" />
+                  {/* Subtle vignette for depth */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-black/20" />
                   
-                  {/* Soft light reflection effect */}
-                  <div className="absolute right-0 top-0 h-1/2 w-1/2 bg-gradient-to-br from-white/5 to-transparent blur-2xl" />
+                  {/* Soft shadow only - no glow on product */}
+                  <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-black/60 to-transparent" />
                 </div>
               ))}
               
-              {/* Decorative frame with glassmorphic style */}
-              <div className="absolute -bottom-4 -right-4 h-full w-full rounded-2xl border border-green-500/20 -z-10" />
+              {/* Glass reflection effect */}
+              <div className="pointer-events-none absolute right-0 top-0 h-48 w-48 bg-gradient-to-br from-white/[0.03] to-transparent blur-2xl" />
             </div>
           </div>
         </div>
