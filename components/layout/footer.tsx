@@ -1,4 +1,8 @@
+"use client";
+
 import Link from "next/link";
+import Image from "next/image";
+import { useState, useEffect } from "react";
 import { Apple, Facebook, Twitter, Linkedin, Instagram } from "lucide-react";
 
 const footerLinks = {
@@ -52,6 +56,12 @@ const socialLinks = [
 ];
 
 export function Footer() {
+  const [year, setYear] = useState<number | null>(null);
+
+  useEffect(() => {
+    setYear(new Date().getFullYear());
+  }, []);
+
   return (
     <footer className="border-t border-border bg-card">
       <div className="mx-auto max-w-7xl px-4 py-12 lg:px-6">
@@ -59,9 +69,20 @@ export function Footer() {
           {/* Brand column */}
           <div className="lg:col-span-1">
             <Link href="/" className="inline-flex items-center gap-2">
-              <span className="text-xl font-bold tracking-tight text-foreground">
-                MAC<span className="text-primary">POWER</span>
-              </span>
+              <Image
+                src="/images/macpower-logo-color.svg"
+                alt="MacPower IT Solutions"
+                width={200}
+                height={40}
+                className="h-8 w-auto dark:hidden"
+              />
+              <Image
+                src="/images/macpower-logo-white.svg"
+                alt="MacPower IT Solutions"
+                width={200}
+                height={40}
+                className="hidden h-8 w-auto dark:block"
+              />
             </Link>
             <p className="mt-4 text-sm text-muted-foreground">
               Somos tu aliado para facilitar la inversión de soluciones IT que optimicen los procesos de tu empresa.
@@ -109,7 +130,7 @@ export function Footer() {
         {/* Bottom bar */}
         <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-border pt-8 md:flex-row">
           <p className="text-xs text-muted-foreground">
-            &copy; {new Date().getFullYear()} MacPower. Todos los derechos reservados.
+            &copy; {year ?? ""} MacPower. Todos los derechos reservados.
           </p>
           <div className="flex gap-6 text-xs text-muted-foreground">
             <Link href="#" className="hover:text-primary">

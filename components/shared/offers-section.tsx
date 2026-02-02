@@ -2,7 +2,7 @@
 
 import React from "react"
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { ArrowRight, Tag, Clock, X, Check, Gift, CreditCard, Percent } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -25,7 +25,12 @@ const iconMap: Record<string, React.ReactNode> = {
 
 export function OffersSection() {
   const [selectedOffer, setSelectedOffer] = useState<Offer | null>(null);
+  const [mounted, setMounted] = useState(false);
   const offers = getActiveOffers().slice(0, 3);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const handleOfferClick = (offer: Offer) => {
     trackEvent("promo_clicked", { promo_id: offer.id, promo_name: offer.title });
@@ -84,11 +89,11 @@ export function OffersSection() {
             {/* Validity */}
             <div className="flex items-center gap-2 text-sm text-muted-foreground">
               <Clock className="h-4 w-4" />
-              <span>Válido hasta: {selectedOffer && new Date(selectedOffer.validUntil).toLocaleDateString('es-CO', { 
+              <span>Válido hasta: {mounted && selectedOffer ? new Date(selectedOffer.validUntil).toLocaleDateString('es-CO', { 
                 year: 'numeric', 
                 month: 'long', 
                 day: 'numeric' 
-              })}</span>
+              }) : selectedOffer?.validUntil}</span>
             </div>
 
             {/* Terms */}
@@ -122,11 +127,63 @@ export function OffersSection() {
 }
 
 function OfferCard({ offer, onClick }: { offer: Offer; onClick: () => void }) {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  // Format date only on client to avoid hydration mismatch
+  const formattedDate = mounted 
+    ? new Date(offer.validUntil).toLocaleDateString('es-CO', { month: 'short', day: 'numeric' })
+    : offer.validUntil.slice(5); // Fallback to MM-DD format from ISO string
+
   return (
     <div 
-      className="group relative bg-card rounded-xl border border-border p-6 hover:border-primary/50 transition-all cursor-pointer"
+      className="group relative bg-card rounded-xl border border-border p-6 cursor-pointer transition-all duration-300 ease-out hover:-translate-y-1"
       onClick={onClick}
+      style={{
+        boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
+      }}
     >
+      {/* Subtle green-teal glow behind card on hover - BEHIND everything */}
+      <div 
+        className="absolute -inset-2 -z-10 rounded-xl opacity-0 group-hover:opacity-40 blur-2xl transition-opacity duration-300 pointer-events-none"
+        style={{
+          background: 'radial-gradient(circle at 50% 50%, rgba(34, 197, 94, 0.25) 0%, rgba(14, 165, 233, 0.15) 50%, transparent 70%)'
+        }}
+      />
+      
+      {/* Gradient border on hover */}
+      <div 
+        className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-0"
+        style={{
+          background: 'linear-gradient(135deg, rgba(34, 197, 94, 0.5) 0%, rgba(14, 165, 233, 0.4) 100%)',
+          padding: '1.5px',
+          WebkitMask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
+          WebkitMaskComposite: 'xor',
+          maskComposite: 'exclude'
+        }}
+      />
+      
+      {/* Orange accent spark - top right corner on hover */}
+      <div 
+        className="absolute top-0 right-0 w-24 h-24 rounded-xl opacity-0 group-hover:opacity-20 blur-2xl transition-opacity duration-300 pointer-events-none z-0"
+        style={{
+          background: 'radial-gradient(circle at top right, rgba(255, 138, 0, 0.4) 0%, transparent 60%)'
+        }}
+      />
+      
+      {/* Enhanced shadow on hover */}
+      <div 
+        className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none -z-20"
+        style={{
+          boxShadow: '0 20px 25px -5px rgba(34, 197, 94, 0.15), 0 10px 10px -5px rgba(14, 165, 233, 0.1)'
+        }}
+      />
+      
+      {/* Card content wrapper - ensures content stays on top with proper z-index */}
+      <div className="relative z-10">
       {/* Badge */}
       {offer.badge && (
         <Badge 
@@ -142,28 +199,29 @@ function OfferCard({ offer, onClick }: { offer: Offer; onClick: () => void }) {
       </div>
 
       {/* Content */}
-      <h3 className="mb-2 text-lg font-semibold text-foreground group-hover:text-primary transition-colors">
+      <h3 className="mb-2 text-lg font-semibold text-foreground dark:text-white dark:group-hover:text-white transition-colors">
         {offer.title}
       </h3>
-      <p className="mb-4 text-sm text-muted-foreground line-clamp-2">
+      <p className="mb-4 text-sm text-muted-foreground dark:text-gray-300 dark:group-hover:text-gray-300 line-clamp-2">
         {offer.description}
       </p>
 
       {/* Validity */}
-      <div className="flex items-center gap-2 text-xs text-muted-foreground mb-4">
+      <div className="flex items-center gap-2 text-xs text-muted-foreground dark:text-gray-400 dark:group-hover:text-gray-400 mb-4">
         <Clock className="h-3 w-3" />
-        <span>Hasta {new Date(offer.validUntil).toLocaleDateString('es-CO', { month: 'short', day: 'numeric' })}</span>
+        <span>Hasta {formattedDate}</span>
       </div>
 
-      {/* CTA */}
+      {/* CTA - with teal accent on hover (only element that changes) */}
       <Button 
         variant="ghost" 
         size="sm" 
-        className="p-0 h-auto text-primary hover:text-primary/80 hover:bg-transparent"
+        className="p-0 h-auto text-primary hover:bg-transparent transition-colors dark:text-cyan-400 dark:group-hover:text-[#2EAFC7]"
       >
         Ver detalles
         <ArrowRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" />
       </Button>
+      </div>
     </div>
   );
 }
