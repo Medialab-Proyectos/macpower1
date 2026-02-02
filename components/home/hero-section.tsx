@@ -145,22 +145,7 @@ export function HeroSection() {
 
           {/* Image carousel */}
           <div className="order-1 lg:order-2 relative z-10">
-            {/* Subtle green glow behind carousel - circuit energy */}
-            <div className="absolute inset-0 -z-10 rounded-2xl opacity-40 blur-3xl" style={{ background: 'radial-gradient(ellipse, rgba(34, 197, 94, 0.12), transparent 70%)' }} />
-            
-            {/* Glassmorphic container */}
-            <div className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-white/5 bg-black/40 backdrop-blur-xl shadow-2xl">
-              {/* Frosted glass layer */}
-              <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-white/[0.02] to-transparent" />
-              
-              {/* Very subtle noise texture for glass realism */}
-              <div 
-                className="pointer-events-none absolute inset-0 opacity-[0.015]"
-                style={{
-                  backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=\'0 0 256 256\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'noise\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.9\' numOctaves=\'4\' /%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23noise)\' /%3E%3C/svg%3E")',
-                }}
-              />
-              
+            <div className="relative aspect-[4/3] overflow-visible">
               {slides.map((slide, index) => (
                 <div
                   key={slide.id}
@@ -173,20 +158,17 @@ export function HeroSection() {
                       : "translate-x-full opacity-0"
                   )}
                 >
-                  <Image
-                    src={slide.image || "/placeholder.svg"}
-                    alt={slide.title}
-                    fill
-                    className="object-contain p-8"
-                    priority={index === 0}
-                  />
-                  {/* Very subtle shadow only - no overlays to preserve product clarity */}
-                  <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/20 to-transparent" />
+                  <div className="relative h-full w-full scale-125">
+                    <Image
+                      src={slide.image || "/placeholder.svg"}
+                      alt={slide.title}
+                      fill
+                      className="object-contain"
+                      priority={index === 0}
+                    />
+                  </div>
                 </div>
               ))}
-              
-              {/* Glass reflection effect */}
-              <div className="pointer-events-none absolute right-0 top-0 h-48 w-48 bg-gradient-to-br from-white/[0.03] to-transparent blur-2xl" />
             </div>
           </div>
         </div>
