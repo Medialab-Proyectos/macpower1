@@ -16,18 +16,29 @@ export function LandingHero() {
       {/* Neon Green Energy Pulses - Very subtle, phosphorescent */}
       <div className="pointer-events-none absolute inset-0">
         {/* Pulse 1 - Top left */}
-        <div className="absolute left-0 top-0 h-[600px] w-[600px] -translate-x-1/2 -translate-y-1/2 animate-pulse-slow rounded-full bg-gradient-radial from-green-500/10 via-green-500/5 to-transparent blur-3xl" />
+        <div 
+          className="absolute left-0 top-0 h-[600px] w-[600px] -translate-x-1/2 -translate-y-1/2 animate-pulse-slow rounded-full blur-3xl"
+          style={{ 
+            background: 'radial-gradient(circle, rgba(34, 197, 94, 0.1) 0%, rgba(34, 197, 94, 0.05) 50%, transparent 100%)' 
+          }}
+        />
         
         {/* Pulse 2 - Right side */}
         <div 
-          className="absolute right-0 top-1/4 h-[500px] w-[500px] translate-x-1/3 rounded-full bg-gradient-radial from-green-400/8 via-green-500/4 to-transparent blur-3xl"
-          style={{ animation: 'float 8s ease-in-out infinite' }}
+          className="absolute right-0 top-1/4 h-[500px] w-[500px] translate-x-1/3 rounded-full blur-3xl"
+          style={{ 
+            background: 'radial-gradient(circle, rgba(74, 222, 128, 0.08) 0%, rgba(34, 197, 94, 0.04) 50%, transparent 100%)',
+            animation: 'float 8s ease-in-out infinite' 
+          }}
         />
         
         {/* Pulse 3 - Bottom center */}
         <div 
-          className="absolute bottom-0 left-1/2 h-[400px] w-[700px] -translate-x-1/2 translate-y-1/2 rounded-full bg-gradient-radial from-emerald-500/6 via-green-500/3 to-transparent blur-3xl"
-          style={{ animation: 'float 10s ease-in-out infinite 2s' }}
+          className="absolute bottom-0 left-1/2 h-[400px] w-[700px] -translate-x-1/2 translate-y-1/2 rounded-full blur-3xl"
+          style={{ 
+            background: 'radial-gradient(circle, rgba(16, 185, 129, 0.06) 0%, rgba(34, 197, 94, 0.03) 50%, transparent 100%)',
+            animation: 'float 10s ease-in-out infinite 2s' 
+          }}
         />
       </div>
 
