@@ -60,21 +60,11 @@ export function HeroSection() {
       {/* Circuit Board Background Image */}
       <div className="pointer-events-none absolute inset-0">
         <Image
-          src="/images/circuit-background-new.png"
+          src="/images/circuit-background.png"
           alt="Circuit board background"
           fill
           className="object-cover"
-          style={{
-            opacity: 0.55
-          }}
           priority
-        />
-        {/* Left gradient overlay */}
-        <div 
-          className="absolute inset-0"
-          style={{
-            background: 'linear-gradient(90deg, rgba(5,7,8,0.95) 0%, rgba(5,7,8,0.85) 30%, rgba(5,7,8,0.4) 55%, rgba(5,7,8,0.0) 70%)'
-          }}
         />
       </div>
       
@@ -113,7 +103,7 @@ export function HeroSection() {
                 </Link>
               </Button>
               <Button size="lg" variant="outline" asChild>
-                <Link href="#contacto">Contáctanos</Link>
+                <Link href="/mac">Explorar Macs</Link>
               </Button>
             </div>
 
