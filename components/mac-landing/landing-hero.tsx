@@ -48,26 +48,6 @@ export function LandingHero() {
         }}
       />
 
-      {/* CSS animations */}
-      <style jsx>{`
-        @keyframes float {
-          0%, 100% { transform: translate(0, 0) scale(1); }
-          50% { transform: translate(10px, -20px) scale(1.05); }
-        }
-        @keyframes pulse-slow {
-          0%, 100% { opacity: 0.3; transform: scale(1); }
-          50% { opacity: 0.5; transform: scale(1.1); }
-        }
-        @keyframes gradient-shift {
-          0% { opacity: 0.3; }
-          100% { opacity: 0.6; }
-        }
-        @keyframes float-card {
-          0%, 100% { transform: translateY(0); }
-          50% { transform: translateY(-8px); }
-        }
-      `}</style>
-      
       <div className="mx-auto max-w-7xl px-4 py-16 lg:px-6 lg:py-24">
         <div className="grid items-center gap-12 lg:grid-cols-2">
           {/* Content */}
