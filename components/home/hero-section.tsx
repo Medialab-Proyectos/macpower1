@@ -56,15 +56,63 @@ export function HeroSection() {
   };
 
   return (
-    <section className="relative overflow-hidden bg-background">
-      {/* Decorative corner elements */}
-      <div className="pointer-events-none absolute left-0 top-0 h-40 w-40 border-l-2 border-t-2 border-primary/20" />
-      <div className="pointer-events-none absolute bottom-0 right-0 h-40 w-40 border-b-2 border-r-2 border-primary/20" />
+    <section className="relative overflow-hidden bg-black">
+      {/* Mac Surface Background - Subtle abstract texture */}
+      <div className="pointer-events-none absolute inset-0 opacity-30">
+        <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-gray-950 to-black" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(30,30,40,0.4),transparent_70%)]" />
+      </div>
+
+      {/* Neon Green Energy Pulses - Very subtle, phosphorescent */}
+      <div className="pointer-events-none absolute inset-0">
+        {/* Pulse 1 - Top left */}
+        <div 
+          className="absolute left-0 top-0 h-[600px] w-[600px] -translate-x-1/2 -translate-y-1/2 animate-pulse-slow rounded-full blur-3xl"
+          style={{ 
+            background: 'radial-gradient(circle, rgba(34, 197, 94, 0.1) 0%, rgba(34, 197, 94, 0.05) 50%, transparent 100%)' 
+          }}
+        />
+        
+        {/* Pulse 2 - Right side */}
+        <div 
+          className="absolute right-0 top-1/4 h-[500px] w-[500px] translate-x-1/3 rounded-full blur-3xl"
+          style={{ 
+            background: 'radial-gradient(circle, rgba(74, 222, 128, 0.08) 0%, rgba(34, 197, 94, 0.04) 50%, transparent 100%)',
+            animation: 'float 8s ease-in-out infinite' 
+          }}
+        />
+        
+        {/* Pulse 3 - Bottom center */}
+        <div 
+          className="absolute bottom-0 left-1/2 h-[400px] w-[700px] -translate-x-1/2 translate-y-1/2 rounded-full blur-3xl"
+          style={{ 
+            background: 'radial-gradient(circle, rgba(16, 185, 129, 0.06) 0%, rgba(34, 197, 94, 0.03) 50%, transparent 100%)',
+            animation: 'float 10s ease-in-out infinite 2s' 
+          }}
+        />
+      </div>
+
+      {/* Animated gradient overlay - Slow movement */}
+      <div className="pointer-events-none absolute inset-0">
+        <div 
+          className="absolute inset-0 bg-gradient-to-br from-green-950/20 via-transparent to-cyan-950/10"
+          style={{ animation: 'gradient-shift 15s ease-in-out infinite alternate' }}
+        />
+      </div>
+
+      {/* Subtle grid pattern for depth */}
+      <div 
+        className="pointer-events-none absolute inset-0 opacity-[0.03]"
+        style={{
+          backgroundImage: 'linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px)',
+          backgroundSize: '64px 64px'
+        }}
+      />
       
       <div className="mx-auto max-w-7xl px-4 py-12 lg:px-6 lg:py-20">
         <div className="grid items-center gap-8 lg:grid-cols-2 lg:gap-12">
           {/* Content */}
-          <div className="order-2 lg:order-1">
+          <div className="order-2 lg:order-1 relative z-10">
             <div className="relative">
               {slides.map((slide, index) => (
                 <div
@@ -76,10 +124,10 @@ export function HeroSection() {
                       : "pointer-events-none absolute inset-0 opacity-0"
                   )}
                 >
-                  <h1 className="mb-4 text-3xl font-bold leading-tight text-foreground md:text-4xl lg:text-5xl text-balance">
+                  <h1 className="mb-4 text-3xl font-bold leading-tight text-white drop-shadow-2xl md:text-4xl lg:text-5xl text-balance">
                     {slide.title}
                   </h1>
-                  <p className="mb-8 text-lg text-muted-foreground text-pretty">
+                  <p className="mb-8 text-lg text-gray-200 text-pretty">
                     {slide.subtitle}
                   </p>
                 </div>
@@ -109,8 +157,8 @@ export function HeroSection() {
                     className={cn(
                       "h-2 rounded-full transition-all",
                       index === currentSlide
-                        ? "w-8 bg-primary"
-                        : "w-2 bg-muted-foreground/30 hover:bg-muted-foreground/50"
+                        ? "w-8 bg-green-400 shadow-lg shadow-green-500/50"
+                        : "w-2 bg-white/30 hover:bg-white/50"
                     )}
                     aria-label={`Ir a slide ${index + 1}`}
                   />
@@ -119,14 +167,14 @@ export function HeroSection() {
               <div className="flex gap-1">
                 <button
                   onClick={prevSlide}
-                  className="flex h-8 w-8 items-center justify-center rounded-full border border-border text-muted-foreground transition-colors hover:border-primary hover:text-primary"
+                  className="flex h-8 w-8 items-center justify-center rounded-full border border-white/20 bg-gray-900/40 text-white backdrop-blur-sm transition-all hover:border-green-400/40 hover:bg-green-500/20"
                   aria-label="Slide anterior"
                 >
                   <ChevronLeft className="h-4 w-4" />
                 </button>
                 <button
                   onClick={nextSlide}
-                  className="flex h-8 w-8 items-center justify-center rounded-full border border-border text-muted-foreground transition-colors hover:border-primary hover:text-primary"
+                  className="flex h-8 w-8 items-center justify-center rounded-full border border-white/20 bg-gray-900/40 text-white backdrop-blur-sm transition-all hover:border-green-400/40 hover:bg-green-500/20"
                   aria-label="Siguiente slide"
                 >
                   <ChevronRight className="h-4 w-4" />
@@ -136,8 +184,11 @@ export function HeroSection() {
           </div>
 
           {/* Image carousel */}
-          <div className="order-1 lg:order-2">
-            <div className="relative aspect-[4/3] overflow-hidden rounded-2xl bg-secondary/30">
+          <div className="order-1 lg:order-2 relative z-10">
+            {/* Glow effect behind carousel */}
+            <div className="absolute inset-0 -z-10 translate-y-4 rounded-2xl bg-gradient-to-br from-green-500/20 via-cyan-500/10 to-transparent blur-2xl" />
+            
+            <div className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-gray-900/80 to-gray-950/80 backdrop-blur-xl">
               {slides.map((slide, index) => (
                 <div
                   key={slide.id}
@@ -154,16 +205,20 @@ export function HeroSection() {
                     src={slide.image || "/placeholder.svg"}
                     alt={slide.title}
                     fill
-                    className="object-cover"
+                    className="object-cover opacity-90 mix-blend-luminosity"
                     priority={index === 0}
                   />
-                  {/* Gradient overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-r from-background/60 via-transparent to-transparent lg:from-background/40" />
+                  {/* Glassmorphic overlay with subtle green tint */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/20 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-br from-green-500/5 via-transparent to-cyan-500/5" />
+                  
+                  {/* Soft light reflection effect */}
+                  <div className="absolute right-0 top-0 h-1/2 w-1/2 bg-gradient-to-br from-white/5 to-transparent blur-2xl" />
                 </div>
               ))}
               
-              {/* Decorative frame */}
-              <div className="absolute -bottom-4 -right-4 h-full w-full rounded-2xl border-2 border-primary/20 -z-10" />
+              {/* Decorative frame with glassmorphic style */}
+              <div className="absolute -bottom-4 -right-4 h-full w-full rounded-2xl border border-green-500/20 -z-10" />
             </div>
           </div>
         </div>
