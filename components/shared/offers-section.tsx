@@ -146,30 +146,44 @@ function OfferCard({ offer, onClick }: { offer: Offer; onClick: () => void }) {
         boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
       }}
     >
-      {/* Gradient border on hover */}
-      <div className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
+      {/* Subtle green-teal glow behind card on hover - BEHIND everything */}
+      <div 
+        className="absolute -inset-2 -z-10 rounded-xl opacity-0 group-hover:opacity-40 blur-2xl transition-opacity duration-300 pointer-events-none"
         style={{
-          background: 'linear-gradient(135deg, rgba(34, 197, 94, 0.4) 0%, rgba(14, 165, 233, 0.4) 100%)',
-          padding: '1px',
+          background: 'radial-gradient(circle at 50% 50%, rgba(34, 197, 94, 0.25) 0%, rgba(14, 165, 233, 0.15) 50%, transparent 70%)'
+        }}
+      />
+      
+      {/* Gradient border on hover */}
+      <div 
+        className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-0"
+        style={{
+          background: 'linear-gradient(135deg, rgba(34, 197, 94, 0.5) 0%, rgba(14, 165, 233, 0.4) 100%)',
+          padding: '1.5px',
           WebkitMask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
           WebkitMaskComposite: 'xor',
           maskComposite: 'exclude'
         }}
       />
       
-      {/* Subtle green-teal glow on hover */}
-      <div className="absolute -inset-1 rounded-xl opacity-0 group-hover:opacity-30 blur-xl transition-opacity duration-300 pointer-events-none"
+      {/* Orange accent spark - top right corner on hover */}
+      <div 
+        className="absolute top-0 right-0 w-24 h-24 rounded-xl opacity-0 group-hover:opacity-20 blur-2xl transition-opacity duration-300 pointer-events-none z-0"
         style={{
-          background: 'radial-gradient(circle at center, rgba(34, 197, 94, 0.3) 0%, rgba(14, 165, 233, 0.2) 50%, transparent 70%)'
+          background: 'radial-gradient(circle at top right, rgba(255, 138, 0, 0.4) 0%, transparent 60%)'
         }}
       />
       
       {/* Enhanced shadow on hover */}
-      <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
+      <div 
+        className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none -z-20"
         style={{
-          boxShadow: '0 20px 25px -5px rgba(34, 197, 94, 0.1), 0 10px 10px -5px rgba(14, 165, 233, 0.08)'
+          boxShadow: '0 20px 25px -5px rgba(34, 197, 94, 0.15), 0 10px 10px -5px rgba(14, 165, 233, 0.1)'
         }}
       />
+      
+      {/* Card content wrapper - ensures content stays on top with proper z-index */}
+      <div className="relative z-10">
       {/* Badge */}
       {offer.badge && (
         <Badge 
@@ -185,28 +199,29 @@ function OfferCard({ offer, onClick }: { offer: Offer; onClick: () => void }) {
       </div>
 
       {/* Content */}
-      <h3 className="mb-2 text-lg font-semibold text-foreground group-hover:text-primary transition-colors">
+      <h3 className="mb-2 text-lg font-semibold text-foreground dark:text-white dark:group-hover:text-white transition-colors">
         {offer.title}
       </h3>
-      <p className="mb-4 text-sm text-muted-foreground line-clamp-2">
+      <p className="mb-4 text-sm text-muted-foreground dark:text-gray-300 dark:group-hover:text-gray-300 line-clamp-2">
         {offer.description}
       </p>
 
       {/* Validity */}
-      <div className="flex items-center gap-2 text-xs text-muted-foreground mb-4">
+      <div className="flex items-center gap-2 text-xs text-muted-foreground dark:text-gray-400 dark:group-hover:text-gray-400 mb-4">
         <Clock className="h-3 w-3" />
         <span>Hasta {formattedDate}</span>
       </div>
 
-      {/* CTA */}
+      {/* CTA - with teal accent on hover (only element that changes) */}
       <Button 
         variant="ghost" 
         size="sm" 
-        className="p-0 h-auto text-primary hover:text-primary/80 hover:bg-transparent"
+        className="p-0 h-auto text-primary hover:bg-transparent transition-colors dark:text-cyan-400 dark:group-hover:text-[#2EAFC7]"
       >
         Ver detalles
         <ArrowRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" />
       </Button>
+      </div>
     </div>
   );
 }

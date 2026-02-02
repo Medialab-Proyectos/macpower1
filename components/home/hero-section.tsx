@@ -60,13 +60,13 @@ export function HeroSection() {
       {/* Circuit Board Background Image */}
       <div className="pointer-events-none absolute inset-0">
         <Image
-          src="/images/circuit-background.png"
+          src="/images/circuit-background-new.png"
           alt="Circuit board background"
           fill
           className="object-cover"
           style={{
-            filter: 'blur(0.1px) saturate(98%) contrast(98%)',
-            opacity: 1
+            filter: 'blur(24px) saturate(85%) contrast(90%)',
+            opacity: 0.55
           }}
           priority
         />
@@ -114,7 +114,7 @@ export function HeroSection() {
                 </Link>
               </Button>
               <Button size="lg" variant="outline" asChild>
-                <Link href="/mac">Explorar Macs</Link>
+                <Link href="#contacto">Contáctanos</Link>
               </Button>
             </div>
 
