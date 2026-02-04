@@ -3,6 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
+import { usePathname } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -18,13 +19,25 @@ import {
   Monitor,
   Laptop,
   GraduationCap,
+  ShieldCheck,
+  Cloud,
+  FlaskConical,
 } from "lucide-react";
 import { ThemeToggle } from "@/components/theme-toggle";
+import { cn } from "@/lib/utils";
 
 const navigation = [
   { name: "Inicio", href: "/" },
   { name: "Nosotros", href: "#" },
-  { name: "Portafolio", href: "#portafolio" },
+  {
+    name: "Portafolio",
+    href: "#",
+    children: [
+      { name: "Soluciones IT", href: "/portafolio/valor-it", icon: ShieldCheck },
+      { name: "Soluciones DaaS", href: "/portafolio/daas", icon: Cloud },
+      { name: "LabPower", href: "#", icon: FlaskConical },
+    ],
+  },
   {
     name: "Apple",
     href: "/apple",
@@ -38,6 +51,20 @@ const navigation = [
 
 export function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const pathname = usePathname();
+
+  const isItemActive = (href: string) => {
+    if (href === "/" || href === "#") return pathname === href;
+    return pathname.startsWith(href);
+  };
+
+  const isParentActive = (item: any) => {
+    if (item.name === "Portafolio") return pathname.startsWith("/portafolio");
+    if (item.children) {
+      return item.children.some((child: any) => isItemActive(child.href));
+    }
+    return isItemActive(item.href);
+  };
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
@@ -70,7 +97,10 @@ export function Header() {
                 <DropdownMenuTrigger asChild>
                   <Button
                     variant="ghost"
-                    className="flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground"
+                    className={cn(
+                      "flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground",
+                      isParentActive(item) && "text-[#2dd4bf] font-medium"
+                    )}
                   >
                     {item.name}
                     <ChevronDown className="h-4 w-4" />
@@ -78,16 +108,19 @@ export function Header() {
                 </DropdownMenuTrigger>
                 <DropdownMenuContent
                   align="start"
-                  className="w-56 bg-card border-border"
+                  className="w-56 bg-black/80 backdrop-blur-md border border-white/10 shadow-xl rounded-xl p-2"
                 >
                   {item.children.map((child) => (
-                    <DropdownMenuItem key={child.name} asChild>
+                    <DropdownMenuItem key={child.name} asChild className="focus:bg-transparent">
                       <Link
                         href={child.href}
-                        className="flex items-center gap-2 cursor-pointer"
+                        className={cn(
+                          "flex items-center gap-2 cursor-pointer w-full rounded-full px-4 py-2 text-sm text-gray-300 transition-all hover:bg-[#2dd4bf] hover:text-black focus:bg-[#2dd4bf] focus:text-black",
+                          pathname === child.href && "bg-[#2dd4bf] text-black"
+                        )}
                       >
                         {child.icon && (
-                          <child.icon className="h-4 w-4 text-primary" />
+                          <child.icon className="h-4 w-4" />
                         )}
                         {child.name}
                       </Link>
@@ -100,7 +133,10 @@ export function Header() {
                 key={item.name}
                 variant="ghost"
                 asChild
-                className="text-sm text-muted-foreground hover:text-foreground"
+                className={cn(
+                  "text-sm text-muted-foreground hover:text-foreground",
+                  isItemActive(item.href) && "text-[#2dd4bf] font-medium"
+                )}
               >
                 <Link href={item.href}>{item.name}</Link>
               </Button>
@@ -141,31 +177,35 @@ export function Header() {
                 <nav className="flex flex-col gap-2">
                   {navigation.map((item) => (
                     <div key={item.name}>
-                      <Link
-                        href={item.href}
-                        onClick={() =>
-                          !item.children && setMobileOpen(false)
-                        }
-                        className="block rounded-md px-3 py-2 text-base font-medium text-foreground hover:bg-secondary"
-                      >
-                        {item.name}
-                      </Link>
-                      {item.children && (
-                        <div className="ml-4 mt-1 flex flex-col gap-1">
-                          {item.children.map((child) => (
-                            <Link
-                              key={child.name}
-                              href={child.href}
-                              onClick={() => setMobileOpen(false)}
-                              className="flex items-center gap-2 rounded-md px-3 py-2 text-sm text-muted-foreground hover:bg-secondary hover:text-foreground"
-                            >
-                              {child.icon && (
-                                <child.icon className="h-4 w-4 text-primary" />
-                              )}
-                              {child.name}
-                            </Link>
-                          ))}
-                        </div>
+                      {item.children ? (
+                        <>
+                          <div className="px-3 py-2 text-base font-medium text-foreground">
+                            {item.name}
+                          </div>
+                          <div className="ml-4 mt-1 flex flex-col gap-1 border-l border-border pl-4">
+                            {item.children.map((child) => (
+                              <Link
+                                key={child.name}
+                                href={child.href}
+                                onClick={() => setMobileOpen(false)}
+                                className="flex items-center gap-2 rounded-md px-3 py-2 text-sm text-muted-foreground hover:bg-secondary hover:text-foreground"
+                              >
+                                {child.icon && (
+                                  <child.icon className="h-4 w-4 text-primary" />
+                                )}
+                                {child.name}
+                              </Link>
+                            ))}
+                          </div>
+                        </>
+                      ) : (
+                        <Link
+                          href={item.href}
+                          onClick={() => setMobileOpen(false)}
+                          className="block rounded-md px-3 py-2 text-base font-medium text-foreground hover:bg-secondary"
+                        >
+                          {item.name}
+                        </Link>
                       )}
                     </div>
                   ))}
