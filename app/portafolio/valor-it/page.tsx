@@ -2,7 +2,7 @@
 import { Hero } from "@/components/portafolio/shared/hero";
 import { KPIStrip } from "@/components/portafolio/shared/kpi-strip";
 import { FlipCardGrid } from "@/components/portafolio/shared/flip-card-grid";
-import { FeatureGrid } from "@/components/portafolio/shared/feature-grid";
+import { Stepper } from "@/components/portafolio/shared/stepper";
 import { AccordionSection } from "@/components/portafolio/shared/accordion-section";
 import { MidCTA } from "@/components/portafolio/shared/mid-cta";
 import { CTABanner } from "@/components/portafolio/shared/cta-banner";
@@ -97,12 +97,12 @@ const uenFeatures = [
   { title: "Soluciones SOC", icon: <Activity className="h-8 w-8" />, description: "Centro de operaciones de seguridad." },
 ];
 
-const nistFeatures = [
-  { title: "Identify", icon: <Scan className="h-6 w-6" />, description: "Identificar riesgos" },
-  { title: "Protect", icon: <ShieldCheck className="h-6 w-6" />, description: "Implementar controles" },
-  { title: "Detect", icon: <Eye className="h-6 w-6" />, description: "Monitoreo continuo" },
-  { title: "Respond", icon: <Zap className="h-6 w-6" />, description: "Respuesta a incidentes" },
-  { title: "Recover", icon: <RotateCcw className="h-6 w-6" />, description: "Restauración de servicios" },
+const nistSteps = [
+  { title: "Identify", description: "Identificamos activos críticos, evaluamos riesgos y vulnerabilidades en tu infraestructura para entender tu postura de seguridad actual." },
+  { title: "Protect", description: "Implementamos controles de seguridad, políticas de acceso y capacitación para prevenir incidentes antes de que ocurran." },
+  { title: "Detect", description: "Monitoreamos continuamente tu infraestructura 24/7 para detectar anomalías, amenazas y comportamientos sospechosos en tiempo real." },
+  { title: "Respond", description: "Activamos protocolos de respuesta inmediata ante incidentes, contenemos amenazas y minimizamos el impacto en tu operación." },
+  { title: "Recover", description: "Restauramos servicios, recuperamos datos afectados y mejoramos defensas para prevenir futuros incidentes similares." },
 ];
 
 const socUseCases = [
@@ -153,13 +153,10 @@ export default function ValorITPage() {
         columns={4} 
       />
       
-      <div className="bg-muted/10">
-        <FeatureGrid 
-          title="Estrategia de Ciberseguridad (NIST)" 
-          features={nistFeatures} 
-          columns={5} 
-        />
-      </div>
+      <Stepper 
+        title="Estrategia de Ciberseguridad (NIST)" 
+        steps={nistSteps} 
+      />
 
       <AccordionSection 
         title="Casos de Uso: ¿Cómo te protege nuestro SOC?" 
