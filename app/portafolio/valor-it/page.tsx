@@ -1,4 +1,6 @@
 
+import { Header } from "@/components/layout/header";
+import { Footer } from "@/components/layout/footer";
 import { Hero } from "@/components/portafolio/shared/hero";
 import { KPIStrip } from "@/components/portafolio/shared/kpi-strip";
 import { FeatureGrid } from "@/components/portafolio/shared/feature-grid";
@@ -7,6 +9,7 @@ import { MidCTA } from "@/components/portafolio/shared/mid-cta";
 import { CTABanner } from "@/components/portafolio/shared/cta-banner";
 import { PortfolioForm } from "@/components/portafolio/shared/portfolio-form";
 import { ImageHighlight } from "@/components/portafolio/shared/image-highlight";
+import { StickyCTA } from "@/components/shared/sticky-cta";
 import { 
   Server, 
   ShieldCheck, 
@@ -59,8 +62,10 @@ const faqs = [
 
 export default function ValorITPage() {
   return (
-    <main className="min-h-screen bg-background">
-      <Hero
+    <div className="min-h-screen bg-background">
+      <Header />
+      <main>
+        <Hero
         title="Soluciones IT (Valor IT)"
         subtitle="Infraestructura robusta + ciberseguridad + continuidad."
         primaryCtaText="Hablar con un asesor"
@@ -121,6 +126,9 @@ export default function ValorITPage() {
       />
 
       <PortfolioForm />
-    </main>
+      </main>
+      <Footer />
+      <StickyCTA />
+    </div>
   );
 }

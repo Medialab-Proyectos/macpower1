@@ -1,4 +1,6 @@
 
+import { Header } from "@/components/layout/header";
+import { Footer } from "@/components/layout/footer";
 import { Hero } from "@/components/portafolio/shared/hero";
 import { KPIStrip } from "@/components/portafolio/shared/kpi-strip";
 import { FeatureGrid } from "@/components/portafolio/shared/feature-grid";
@@ -8,6 +10,7 @@ import { AccordionSection } from "@/components/portafolio/shared/accordion-secti
 import { CTABanner } from "@/components/portafolio/shared/cta-banner";
 import { PortfolioForm } from "@/components/portafolio/shared/portfolio-form";
 import { ImageHighlight } from "@/components/portafolio/shared/image-highlight";
+import { StickyCTA } from "@/components/shared/sticky-cta";
 import { Globe, DollarSign, Headphones, Clock } from "lucide-react";
 
 export const metadata = {
@@ -67,8 +70,10 @@ const terms = [
 
 export default function DaaSPage() {
   return (
-    <main className="min-h-screen bg-background">
-      <Hero
+    <div className="min-h-screen bg-background">
+      <Header />
+      <main>
+        <Hero
         title="Soluciones DaaS"
         subtitle="Tecnología bajo control, continuidad sin interrupciones."
         primaryCtaText="Cotizar DaaS"
@@ -114,6 +119,9 @@ export default function DaaSPage() {
       />
 
       <PortfolioForm />
-    </main>
+      </main>
+      <Footer />
+      <StickyCTA />
+    </div>
   );
 }
