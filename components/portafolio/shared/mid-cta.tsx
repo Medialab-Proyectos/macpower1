@@ -15,32 +15,47 @@ interface MidCTAProps {
 
 export function MidCTA({ title, ctaText, ctaHref, steps }: MidCTAProps) {
   return (
-    <section className="py-16 bg-muted/10 border-y border-white/5">
-      <div className="container mx-auto px-4 text-center">
-        <h2 className="mb-8 text-2xl font-bold tracking-tight">{title}</h2>
-        
-        {/* Mini Progress */}
-        <div className="flex items-center justify-center gap-2 mb-10 text-sm md:text-base text-muted-foreground">
-          {steps.map((step, index) => (
-            <div key={index} className="flex items-center">
-              <span className={`font-semibold ${index === 0 ? "text-[#2dd4bf]" : ""}`}>
-                {step.label}
-              </span>
-              {index < steps.length - 1 && (
-                <ArrowRight className="h-4 w-4 mx-2 text-muted-foreground/50" />
-              )}
-            </div>
-          ))}
-        </div>
+    <section className="relative py-16 md:py-20 bg-gradient-to-br from-muted/20 via-muted/10 to-transparent border-y border-white/5 overflow-hidden">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl relative z-10">
+        <div className="text-center space-y-10">
+          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight text-balance">
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-300">
+              {title}
+            </span>
+          </h2>
+          
+          {/* Mini Progress */}
+          <div className="flex flex-wrap items-center justify-center gap-3 md:gap-4 text-sm md:text-base">
+            {steps.map((step, index) => (
+              <div key={index} className="flex items-center">
+                <div className={`flex items-center gap-2 px-4 py-2 rounded-full border transition-all ${
+                  index === 0 
+                    ? "bg-[#2dd4bf]/10 border-[#2dd4bf]/30 text-[#2dd4bf] font-semibold" 
+                    : "bg-card/30 border-white/10 text-muted-foreground"
+                }`}>
+                  <span className="font-medium">{step.label}</span>
+                </div>
+                {index < steps.length - 1 && (
+                  <ArrowRight className="h-5 w-5 mx-2 text-muted-foreground/50" />
+                )}
+              </div>
+            ))}
+          </div>
 
-        <Button
-          asChild
-          size="lg"
-          className="bg-[#2dd4bf] text-black hover:bg-[#2dd4bf]/90 font-semibold rounded-full px-8"
-        >
-          <Link href={ctaHref}>{ctaText}</Link>
-        </Button>
+          <div className="pt-2">
+            <Button
+              asChild
+              size="lg"
+              className="bg-gradient-to-r from-[#2dd4bf] to-[#14b8a6] text-black hover:opacity-90 font-semibold rounded-full px-10 py-6 text-base shadow-lg shadow-[#2dd4bf]/20 transition-all hover:scale-105"
+            >
+              <Link href={ctaHref}>{ctaText}</Link>
+            </Button>
+          </div>
+        </div>
       </div>
+      
+      {/* Decorative gradient */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 -z-10 h-[300px] w-[300px] rounded-full bg-[#2dd4bf]/5 blur-[100px]" />
     </section>
   );
 }

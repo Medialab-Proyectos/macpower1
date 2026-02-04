@@ -50,25 +50,35 @@ export function PortfolioForm() {
 
   if (isSuccess) {
     return (
-      <div className="rounded-lg bg-card p-8 text-center border border-white/10">
-        <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-[#2dd4bf]/10">
-          <CheckCircle className="h-8 w-8 text-[#2dd4bf]" />
+      <section id="contacto" className="py-16 md:py-20">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-2xl">
+          <div className="rounded-3xl bg-gradient-to-br from-card/80 to-card/40 backdrop-blur-xl p-12 text-center border border-white/10 shadow-xl">
+            <div className="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-full bg-[#2dd4bf]/20 shadow-lg shadow-[#2dd4bf]/30">
+              <CheckCircle className="h-10 w-10 text-[#2dd4bf]" />
+            </div>
+            <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-3">¡Gracias!</h3>
+            <p className="text-lg text-muted-foreground">
+              Recibimos tu solicitud. Un asesor te contactará pronto.
+            </p>
+          </div>
         </div>
-        <h3 className="text-xl font-bold text-foreground">¡Gracias!</h3>
-        <p className="mt-2 text-muted-foreground">
-          Recibimos tu solicitud. Un asesor te contactará pronto.
-        </p>
-      </div>
+      </section>
     );
   }
 
   return (
-    <section id="contacto" className="py-16">
-      <div className="container mx-auto px-4 max-w-2xl text-center">
-        <h2 className="mb-2 text-3xl font-bold tracking-tight">Hablemos</h2>
-        <p className="mb-8 text-muted-foreground">Déjanos tus datos para iniciar.</p>
+    <section id="contacto" className="py-16 md:py-20 lg:py-24">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl">
+        <div className="text-center mb-12">
+          <h2 className="mb-4 text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-balance">
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-400">
+              Hablemos
+            </span>
+          </h2>
+          <p className="text-lg md:text-xl text-muted-foreground text-pretty">Déjanos tus datos para iniciar.</p>
+        </div>
         
-        <form onSubmit={handleSubmit} className="text-left space-y-4 bg-card/50 p-6 rounded-xl border border-white/5 backdrop-blur-sm">
+        <form onSubmit={handleSubmit} className="text-left space-y-6 bg-gradient-to-br from-card/80 to-card/40 backdrop-blur-xl p-8 md:p-10 lg:p-12 rounded-3xl border border-white/10 shadow-2xl">
           <div className="grid gap-4 sm:grid-cols-2">
             <div className="space-y-2">
               <Label htmlFor="name">Nombre completo</Label>
@@ -130,11 +140,16 @@ export function PortfolioForm() {
             {errors.interest && <span className="text-xs text-red-500">{errors.interest}</span>}
           </div>
 
-          <Button type="submit" className="w-full bg-[#2dd4bf] text-black hover:bg-[#2dd4bf]/90" disabled={isSubmitting}>
-            {isSubmitting ? <Loader2 className="animate-spin h-4 w-4" /> : "Enviar solicitud"}
+          <Button 
+            type="submit" 
+            size="lg"
+            className="w-full bg-gradient-to-r from-[#2dd4bf] to-[#14b8a6] text-black hover:opacity-90 font-semibold text-base py-6 shadow-lg shadow-[#2dd4bf]/20 transition-all hover:scale-105" 
+            disabled={isSubmitting}
+          >
+            {isSubmitting ? <Loader2 className="animate-spin h-5 w-5" /> : "Enviar solicitud"}
           </Button>
 
-          <p className="text-center text-xs text-muted-foreground mt-4">
+          <p className="text-center text-sm text-muted-foreground/80 pt-2">
             Usaremos tus datos solo para contactarte sobre tu solicitud.
           </p>
         </form>

@@ -50,7 +50,7 @@ const navigation = [
 ];
 
 export function Header() {
-  const [isOpen, setIsOpen] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
   const pathname = usePathname();
 

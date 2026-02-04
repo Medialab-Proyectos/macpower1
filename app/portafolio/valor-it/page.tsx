@@ -59,7 +59,7 @@ const faqs = [
 
 export default function ValorITPage() {
   return (
-    <main className="min-h-screen bg-background">
+    <>
       <Hero
         title="Soluciones IT (Valor IT)"
         subtitle="Infraestructura robusta + ciberseguridad + continuidad."
@@ -121,6 +121,6 @@ export default function ValorITPage() {
       />
 
       <PortfolioForm />
-    </main>
+    </>
   );
 }

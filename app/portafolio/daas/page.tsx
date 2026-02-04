@@ -67,7 +67,7 @@ const terms = [
 
 export default function DaaSPage() {
   return (
-    <main className="min-h-screen bg-background">
+    <>
       <Hero
         title="Soluciones DaaS"
         subtitle="Tecnología bajo control, continuidad sin interrupciones."
@@ -114,6 +114,6 @@ export default function DaaSPage() {
       />
 
       <PortfolioForm />
-    </main>
+    </>
   );
 }

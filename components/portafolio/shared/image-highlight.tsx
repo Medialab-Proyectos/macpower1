@@ -17,13 +17,13 @@ export function ImageHighlight({
   return (
     <section
       className={cn(
-        "relative w-full h-[400px] overflow-hidden flex items-center justify-center",
+        "relative w-full min-h-[400px] md:min-h-[500px] lg:min-h-[600px] overflow-hidden flex items-center justify-center py-20 md:py-24",
         className,
       )}
     >
       {/* Background Image or Gradient */}
       <div
-        className={cn("absolute inset-0 bg-gradient-to-r", fallbackGradient)}
+        className={cn("absolute inset-0 bg-gradient-to-br", fallbackGradient)}
       />
 
       <div className="absolute inset-0">
@@ -31,19 +31,23 @@ export function ImageHighlight({
           src={imageSrc}
           alt="Highlights"
           fill
-          className="object-cover opacity-60 mix-blend-overlay"
+          className="object-cover opacity-50"
           priority={false}
         />
-        <div className="absolute inset-0 bg-black/40" />{" "}
-        {/* Overlay for text readability */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-black/70" />
       </div>
 
       {/* Content */}
-      <div className="relative z-10 container mx-auto px-4 text-center">
-        <h2 className="text-3xl md:text-5xl font-bold text-white tracking-tight drop-shadow-lg max-w-4xl mx-auto">
-          {text}
+      <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl text-center">
+        <h2 className="text-3xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white tracking-tight drop-shadow-2xl text-balance leading-tight">
+          <span className="bg-clip-text text-transparent bg-gradient-to-r from-white via-white to-[#2dd4bf]">
+            {text}
+          </span>
         </h2>
       </div>
+      
+      {/* Decorative gradient overlay */}
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent" />
     </section>
   );
 }
