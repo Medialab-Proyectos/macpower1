@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import {
@@ -50,8 +50,13 @@ const navigation = [
 ];
 
 export function Header() {
-  const [mobileOpen, setMobileOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
   const pathname = usePathname();
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const isItemActive = (href: string) => {
     if (href === "/" || href === "#") return pathname === href;
@@ -116,7 +121,7 @@ export function Header() {
                         href={child.href}
                         className={cn(
                           "flex items-center gap-2 cursor-pointer w-full rounded-full px-4 py-2 text-sm text-gray-300 transition-all hover:bg-[#2dd4bf] hover:text-black focus:bg-[#2dd4bf] focus:text-black",
-                          pathname === child.href && "bg-[#2dd4bf] text-black"
+                          mounted && pathname === child.href && "bg-[#2dd4bf] text-black"
                         )}
                       >
                         {child.icon && (
