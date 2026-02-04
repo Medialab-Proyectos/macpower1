@@ -18,10 +18,8 @@ export function FeatureGrid({ title, features, columns = 4 }: FeatureGridProps) 
     <section className="py-16 md:py-20 lg:py-24">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
         {title && (
-          <h2 className="mb-12 lg:mb-16 text-center text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-balance">
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-400">
-              {title}
-            </span>
+          <h2 className="mb-12 lg:mb-16 text-center text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-balance text-foreground">
+            {title}
           </h2>
         )}
         <div className={cn(
@@ -31,17 +29,23 @@ export function FeatureGrid({ title, features, columns = 4 }: FeatureGridProps) 
           columns === 4 && "sm:grid-cols-2 lg:grid-cols-4"
         )}>
           {features.map((feature, index) => (
-            <Card key={index} className="group relative bg-gradient-to-br from-card/80 to-card/40 border-white/10 backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:bg-card hover:border-[#2dd4bf]/50 hover:shadow-xl hover:shadow-[#2dd4bf]/10">
-              <CardHeader className="pb-3">
+            <Card key={index} className="group relative bg-card/50 border-border/50 backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:bg-card hover:border-accent/50 hover:shadow-xl hover:shadow-accent/10 overflow-hidden">
+              {/* Gradient overlay on hover */}
+              <div className="absolute inset-0 bg-gradient-to-br from-accent/5 via-transparent to-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+              
+              {/* Subtle glow effect */}
+              <div className="absolute -inset-1 rounded-xl opacity-0 group-hover:opacity-10 blur-xl transition-opacity duration-300 pointer-events-none bg-gradient-to-br from-accent to-primary -z-10" />
+              
+              <CardHeader className="pb-3 relative z-10">
                 {feature.icon && (
-                  <div className="mb-4 inline-flex p-3 rounded-xl bg-[#2dd4bf]/10 text-[#2dd4bf] group-hover:bg-[#2dd4bf]/20 transition-colors">
+                  <div className="mb-4 inline-flex p-3 rounded-xl bg-accent/10 text-accent group-hover:bg-accent/20 group-hover:scale-110 transition-all duration-300">
                     {feature.icon}
                   </div>
                 )}
-                <CardTitle className="text-xl lg:text-2xl text-balance">{feature.title}</CardTitle>
+                <CardTitle className="text-xl lg:text-2xl text-balance text-foreground">{feature.title}</CardTitle>
               </CardHeader>
               {feature.description && (
-                <CardContent>
+                <CardContent className="relative z-10">
                   <CardDescription className="text-base leading-relaxed text-pretty">
                     {feature.description}
                   </CardDescription>

@@ -24,10 +24,8 @@ export function AccordionSection({ title, items, id, imageSrc }: AccordionSectio
     <section id={id} className="py-16 md:py-20 lg:py-24">
       <div className={cn("container mx-auto px-4 sm:px-6 lg:px-8", imageSrc ? "max-w-7xl" : "max-w-4xl")}>
         {title && (
-          <h2 className="mb-12 lg:mb-16 text-center text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-balance">
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-400">
-              {title}
-            </span>
+          <h2 className="mb-12 lg:mb-16 text-center text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-balance text-foreground">
+            {title}
           </h2>
         )}
         
@@ -51,9 +49,9 @@ export function AccordionSection({ title, items, id, imageSrc }: AccordionSectio
                 <AccordionItem 
                   key={index} 
                   value={`item-${index}`} 
-                  className="border border-white/10 rounded-2xl px-6 bg-card/30 backdrop-blur-sm data-[state=open]:bg-card/50 data-[state=open]:border-[#2dd4bf]/30 transition-all"
+                  className="border border-border/50 rounded-2xl px-6 bg-card/50 backdrop-blur-sm data-[state=open]:bg-card data-[state=open]:border-accent/40 transition-all group"
                 >
-                  <AccordionTrigger className="text-left text-lg md:text-xl font-semibold hover:text-[#2dd4bf] transition-colors hover:no-underline py-6 text-balance">
+                  <AccordionTrigger className="text-left text-lg md:text-xl font-semibold hover:text-accent transition-colors hover:no-underline py-6 text-balance">
                     {item.question}
                   </AccordionTrigger>
                   <AccordionContent className="text-base md:text-lg text-muted-foreground leading-relaxed whitespace-pre-line pb-6 text-pretty">
