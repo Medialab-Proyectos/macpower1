@@ -21,17 +21,19 @@ interface AccordionSectionProps {
 
 export function AccordionSection({ title, items, id, imageSrc }: AccordionSectionProps) {
   return (
-    <section id={id} className="py-16">
-      <div className={cn("container mx-auto px-4", imageSrc ? "" : "max-w-3xl")}>
+    <section id={id} className="py-16 md:py-20 lg:py-24">
+      <div className={cn("container mx-auto px-4 sm:px-6 lg:px-8", imageSrc ? "max-w-7xl" : "max-w-4xl")}>
         {title && (
-          <h2 className="mb-8 text-center text-3xl font-bold tracking-tight">
-            {title}
+          <h2 className="mb-12 lg:mb-16 text-center text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-balance">
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-400">
+              {title}
+            </span>
           </h2>
         )}
         
-        <div className={cn("grid gap-12", imageSrc ? "lg:grid-cols-2 lg:items-center" : "grid-cols-1")}>
+        <div className={cn("grid gap-12 lg:gap-16", imageSrc ? "lg:grid-cols-2 lg:items-center" : "grid-cols-1")}>
           {imageSrc && (
-            <div className="relative aspect-square w-full overflow-hidden rounded-xl border border-white/10 shadow-xl lg:order-2">
+            <div className="relative aspect-square w-full overflow-hidden rounded-3xl border border-white/10 shadow-2xl lg:order-2">
               <Image 
                 src={imageSrc} 
                 alt={title || "Section Image"} 
@@ -44,13 +46,17 @@ export function AccordionSection({ title, items, id, imageSrc }: AccordionSectio
           )}
 
           <div className={imageSrc ? "lg:order-1" : ""}>
-             <Accordion type="single" collapsible className="w-full">
+             <Accordion type="single" collapsible className="w-full space-y-4">
               {items.map((item, index) => (
-                <AccordionItem key={index} value={`item-${index}`}>
-                  <AccordionTrigger className="text-left text-lg font-medium hover:text-[#2dd4bf] transition-colors">
+                <AccordionItem 
+                  key={index} 
+                  value={`item-${index}`} 
+                  className="border border-white/10 rounded-2xl px-6 bg-card/30 backdrop-blur-sm data-[state=open]:bg-card/50 data-[state=open]:border-[#2dd4bf]/30 transition-all"
+                >
+                  <AccordionTrigger className="text-left text-lg md:text-xl font-semibold hover:text-[#2dd4bf] transition-colors hover:no-underline py-6 text-balance">
                     {item.question}
                   </AccordionTrigger>
-                  <AccordionContent className="text-muted-foreground whitespace-pre-line">
+                  <AccordionContent className="text-base md:text-lg text-muted-foreground leading-relaxed whitespace-pre-line pb-6 text-pretty">
                     {item.answer}
                   </AccordionContent>
                 </AccordionItem>

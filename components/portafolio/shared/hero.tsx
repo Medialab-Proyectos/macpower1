@@ -24,23 +24,25 @@ export function Hero({
   fallbackGradient = "bg-gradient-to-br from-[#2dd4bf]/20 to-purple-500/20"
 }: HeroProps) {
   return (
-    <section className="relative overflow-hidden py-16 lg:py-24">
-      <div className="container relative z-10 mx-auto px-4">
-        <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
+    <section className="relative overflow-hidden pt-24 pb-16 lg:pt-32 lg:pb-20">
+      <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
+        <div className="grid gap-12 lg:grid-cols-2 lg:gap-16 lg:items-center">
           
           {/* Text Content */}
-          <div className="flex flex-col items-center text-center lg:items-start lg:text-left">
-            <h1 className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-400">
-              {title}
+          <div className="flex flex-col items-start space-y-6 lg:space-y-8">
+            <h1 className="text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl xl:text-7xl text-balance">
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-white via-white to-[#2dd4bf]">
+                {title}
+              </span>
             </h1>
-            <p className="mt-6 text-lg leading-8 text-muted-foreground">
+            <p className="text-xl sm:text-2xl leading-relaxed text-muted-foreground text-pretty max-w-xl">
               {subtitle}
             </p>
-            <div className="mt-8 flex flex-wrap items-center justify-center gap-4 lg:justify-start">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 pt-2">
               <Button
                 asChild
                 size="lg"
-                className="bg-[#2dd4bf] text-black hover:bg-[#2dd4bf]/90 font-semibold rounded-full px-8"
+                className="w-full sm:w-auto bg-gradient-to-r from-[#2dd4bf] to-[#14b8a6] text-black hover:opacity-90 font-semibold rounded-full px-8 py-6 text-base shadow-lg shadow-[#2dd4bf]/20 transition-all hover:shadow-xl hover:shadow-[#2dd4bf]/30"
               >
                 <Link href={primaryCtaHref}>{primaryCtaText}</Link>
               </Button>
@@ -48,7 +50,7 @@ export function Hero({
                 asChild
                 variant="outline"
                 size="lg"
-                className="rounded-full px-8 border-white/20 hover:bg-white/10"
+                className="w-full sm:w-auto rounded-full px-8 py-6 text-base border-white/20 hover:bg-white/10 hover:border-white/30 transition-all"
               >
                 <Link href={secondaryCtaHref}>{secondaryCtaText}</Link>
               </Button>
@@ -56,8 +58,8 @@ export function Hero({
           </div>
 
           {/* Image Content */}
-          <div className="relative mx-auto w-full max-w-lg lg:max-w-none">
-            <div className={`aspect-[4/3] w-full overflow-hidden rounded-2xl border border-white/10 shadow-2xl ${!imageSrc ? fallbackGradient : ''}`}>
+          <div className="relative mx-auto w-full lg:mx-0">
+            <div className={`aspect-[4/3] w-full overflow-hidden rounded-3xl border border-white/10 shadow-2xl ${!imageSrc ? fallbackGradient : ''}`}>
               {imageSrc ? (
                  <Image
                   src={imageSrc}
@@ -75,12 +77,16 @@ export function Hero({
             </div>
             
              {/* Decorative blob behind image */}
-             <div className="absolute -top-12 -right-12 -z-10 h-[300px] w-[300px] rounded-full bg-[#2dd4bf]/30 blur-[80px] opacity-40" />
+             <div className="absolute -top-12 -right-12 -z-10 h-[350px] w-[350px] rounded-full bg-[#2dd4bf]/20 blur-[100px]" />
+             <div className="absolute -bottom-12 -left-12 -z-10 h-[300px] w-[300px] rounded-full bg-purple-500/10 blur-[100px]" />
           </div>
         </div>
 
         {/* Decorative elements pattern background */}
-        <div className="absolute top-1/2 left-0 -z-10 h-[500px] w-[500px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-purple-500/10 blur-[100px] opacity-30" />
+        <div className="absolute top-0 left-0 -z-10 h-full w-full overflow-hidden">
+          <div className="absolute top-1/4 -left-1/4 h-[600px] w-[600px] rounded-full bg-purple-500/5 blur-[120px]" />
+          <div className="absolute top-1/2 -right-1/4 h-[500px] w-[500px] rounded-full bg-[#2dd4bf]/5 blur-[120px]" />
+        </div>
       </div>
     </section>
   );
