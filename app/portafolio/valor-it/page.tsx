@@ -1,6 +1,7 @@
 
 import { Hero } from "@/components/portafolio/shared/hero";
 import { KPIStrip } from "@/components/portafolio/shared/kpi-strip";
+import { FlipCardGrid } from "@/components/portafolio/shared/flip-card-grid";
 import { FeatureGrid } from "@/components/portafolio/shared/feature-grid";
 import { AccordionSection } from "@/components/portafolio/shared/accordion-section";
 import { MidCTA } from "@/components/portafolio/shared/mid-cta";
@@ -30,6 +31,65 @@ const kpis = [
   { value: "8 Países", label: "Presencia regional" },
 ];
 
+const itSolutionsExplained = [
+  { 
+    title: "Soluciones IaaS", 
+    icon: <Server className="h-8 w-8" />, 
+    frontDescription: "Infraestructura como Servicio para tu negocio.",
+    backTitle: "Infrastructure-as-a-Service (IaaS)",
+    backDescription: "Infraestructura de TI bajo demanda. Renta servidores, almacenamiento y networking sin comprar hardware físico.",
+    backBullets: [
+      "Servidores virtuales escalables según tu necesidad",
+      "Almacenamiento en la nube con alta disponibilidad",
+      "Paga solo por lo que usas, sin inversión inicial",
+      "Actualización y mantenimiento incluidos",
+      "Acceso remoto seguro desde cualquier lugar"
+    ]
+  },
+  { 
+    title: "Ciber Recuperación", 
+    icon: <RotateCcw className="h-8 w-8" />, 
+    frontDescription: "Protección ante ataques y recuperación rápida de datos.",
+    backTitle: "¿Qué es Ciber Recuperación?",
+    backDescription: "Sistemas diseñados para recuperar tus datos y operaciones después de un ciberataque, como ransomware o brechas de seguridad.",
+    backBullets: [
+      "Backups inmutables que no pueden ser cifrados por ransomware",
+      "Recuperación rápida de datos críticos en minutos",
+      "Bóveda de datos aislada de tu red principal",
+      "Plan de continuidad del negocio automatizado",
+      "Pruebas regulares de recuperación ante desastres"
+    ]
+  },
+  { 
+    title: "Ciber Protección", 
+    icon: <ShieldCheck className="h-8 w-8" />, 
+    frontDescription: "Defensa multicapa contra amenazas digitales.",
+    backTitle: "Protección Integral de Ciberseguridad",
+    backDescription: "Sistema de seguridad proactivo que protege tus datos y sistemas antes, durante y después de un ataque.",
+    backBullets: [
+      "Antivirus y antimalware de última generación",
+      "Firewall y detección de intrusiones (IDS/IPS)",
+      "Protección de endpoints (computadores y móviles)",
+      "Cifrado de datos en reposo y en tránsito",
+      "Monitoreo continuo de vulnerabilidades"
+    ]
+  },
+  { 
+    title: "Soluciones SOC", 
+    icon: <Activity className="h-8 w-8" />, 
+    frontDescription: "Centro de operaciones de seguridad monitoreando 24/7.",
+    backTitle: "Security Operations Center (SOC)",
+    backDescription: "Equipo de expertos en seguridad monitoreando tu infraestructura 24/7 para detectar y responder a amenazas en tiempo real.",
+    backBullets: [
+      "Monitoreo continuo 24/7/365 por especialistas",
+      "Detección temprana de amenazas y comportamientos anómalos",
+      "Respuesta inmediata a incidentes de seguridad",
+      "Análisis de logs y correlación de eventos (SIEM)",
+      "Reportes detallados de seguridad y cumplimiento normativo"
+    ]
+  },
+];
+
 const uenFeatures = [
   { title: "Soluciones IaaS", icon: <Server className="h-8 w-8" />, description: "Infraestructura escalable y segura." },
   { title: "Ciber Recuperación", icon: <RotateCcw className="h-8 w-8" />, description: "Resiliencia ante desastres." },
@@ -46,8 +106,22 @@ const nistFeatures = [
 ];
 
 const socUseCases = [
-  { question: "Ransomware", answer: "Detectamos patrones de cifrado anómalos y bloqueamos ataques antes de que paralicen tu operación. Respuesta inmediata para minimizar el impacto." },
-  { question: "Suplantación de marca/identidad", answer: "Monitoreamos la web superficial y profunda para detectar uso no autorizado de tu marca y credenciales comprometidas." },
+  { 
+    question: "Protección contra Ransomware", 
+    answer: "Detectamos patrones de cifrado anómalos y comportamientos sospechosos en tiempo real. Nuestro SOC bloquea ataques de ransomware antes de que paralicen tu operación.\n\n✓ Detección de actividad de cifrado masivo\n✓ Aislamiento automático de dispositivos comprometidos\n✓ Respuesta inmediata en menos de 15 minutos\n✓ Análisis forense post-incidente\n✓ Recuperación coordinada con Ciber Recuperación" 
+  },
+  { 
+    question: "Suplantación de Marca e Identidad (Phishing)", 
+    answer: "Monitoreamos la web superficial y profunda (dark web) para detectar uso no autorizado de tu marca, dominios similares fraudulentos y credenciales comprometidas.\n\n✓ Escaneo de dominios falsos que imitan tu marca\n✓ Monitoreo de dark web para credenciales filtradas\n✓ Detección de campañas de phishing dirigidas\n✓ Alertas inmediatas de amenazas de suplantación\n✓ Acciones legales y takedown de sitios fraudulentos" 
+  },
+  { 
+    question: "Detección de Intrusiones y Accesos no Autorizados", 
+    answer: "Identificamos intentos de acceso no autorizado, movimientos laterales dentro de tu red y exfiltración de datos antes de que causen daño.\n\n✓ Monitoreo de intentos de login fallidos y brute force\n✓ Detección de privilegios elevados anormales\n✓ Alertas de acceso desde ubicaciones geográficas inusuales\n✓ Análisis de comportamiento de usuarios (UBA)\n✓ Respuesta automática con bloqueo de cuentas comprometidas" 
+  },
+  { 
+    question: "Cumplimiento Normativo y Auditorías", 
+    answer: "Ayudamos a cumplir con regulaciones como ISO 27001, NIST, PCI-DSS y regulaciones locales mediante monitoreo continuo y reportes detallados.\n\n✓ Reportes automáticos de cumplimiento normativo\n✓ Auditoría de logs y trazabilidad completa\n✓ Documentación lista para inspecciones\n✓ Alertas de eventos que requieren reporte obligatorio\n✓ Dashboard ejecutivo con métricas de seguridad" 
+  },
 ];
 
 const faqs = [
@@ -72,9 +146,10 @@ export default function ValorITPage() {
       
       <KPIStrip kpis={kpis} />
       
-      <FeatureGrid 
-        title="Nuestras Unidades de Negocio" 
-        features={uenFeatures} 
+      <FlipCardGrid 
+        title="Nuestras Soluciones IT Explicadas"
+        subtitle="Click en cada tarjeta para entender cómo estas tecnologías protegen tu negocio"
+        features={itSolutionsExplained} 
         columns={4} 
       />
       
@@ -82,14 +157,13 @@ export default function ValorITPage() {
         <FeatureGrid 
           title="Estrategia de Ciberseguridad (NIST)" 
           features={nistFeatures} 
-          columns={4} 
+          columns={5} 
         />
       </div>
 
       <AccordionSection 
-        title="Casos de Uso SOC" 
-        items={socUseCases} 
-        imageSrc="/images/portafolio/valor-it/soc.jpg"
+        title="Casos de Uso: ¿Cómo te protege nuestro SOC?" 
+        items={socUseCases}
       />
 
       <MidCTA 
