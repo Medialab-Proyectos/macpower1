@@ -25,7 +25,10 @@ function FlipCard({ feature }: { feature: FlipCardFeature }) {
 
   return (
     <div 
-      className="flip-card-container group perspective-1000 cursor-pointer min-h-[380px] relative"
+      className={cn(
+        "flip-card-container group perspective-1000 cursor-pointer h-[380px]",
+        isFlipped && "z-50"
+      )}
       onClick={() => setIsFlipped(!isFlipped)}
       onKeyDown={(e) => {
         if (e.key === 'Enter' || e.key === ' ') {
@@ -38,8 +41,8 @@ function FlipCard({ feature }: { feature: FlipCardFeature }) {
       aria-label={`${feature.title}. Click to ${isFlipped ? 'see overview' : 'learn more'}`}
     >
       <div className={cn(
-        "flip-card-inner absolute top-0 left-0 w-full h-[380px] transition-all duration-700 transform-style-3d",
-        isFlipped && "rotate-y-180 z-50"
+        "flip-card-inner w-full h-full transition-all duration-700 transform-style-3d relative",
+        isFlipped && "rotate-y-180"
       )}>
         {/* Front of card */}
         <Card className={cn(
@@ -136,13 +139,11 @@ export function FlipCardGrid({ title, subtitle, features, columns = 4 }: FlipCar
           </div>
         )}
         <div className={cn(
-          "grid gap-6 md:gap-8 relative",
+          "grid gap-6 md:gap-8",
           columns === 2 && "sm:grid-cols-2",
           columns === 3 && "sm:grid-cols-2 lg:grid-cols-3",
           columns === 4 && "sm:grid-cols-2 lg:grid-cols-4"
-        )}
-        style={{ gridAutoRows: 'minmax(380px, auto)' }}
-        >
+        )}>
           {features.map((feature, index) => (
             <FlipCard key={index} feature={feature} />
           ))}
