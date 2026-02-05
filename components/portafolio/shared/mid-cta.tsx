@@ -1,9 +1,10 @@
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Search, FileText, Rocket } from "lucide-react";
 
 interface Step {
   label: string;
+  icon?: React.ReactNode;
 }
 
 interface MidCTAProps {
@@ -12,6 +13,12 @@ interface MidCTAProps {
   ctaHref: string;
   steps: Step[];
 }
+
+const defaultIcons = [
+  <Search key="search" className="h-4 w-4" />,
+  <FileText key="file" className="h-4 w-4" />,
+  <Rocket key="rocket" className="h-4 w-4" />,
+];
 
 export function MidCTA({ title, ctaText, ctaHref, steps }: MidCTAProps) {
   return (
@@ -30,9 +37,10 @@ export function MidCTA({ title, ctaText, ctaHref, steps }: MidCTAProps) {
               <div key={index} className="flex items-center">
                 <div className={`flex items-center gap-2 px-4 py-2 rounded-full border transition-all ${
                   index === 0 
-                    ? "bg-[#2dd4bf]/10 border-[#2dd4bf]/30 text-[#2dd4bf] font-semibold" 
+                    ? "bg-accent/10 border-accent/30 text-accent font-semibold" 
                     : "bg-card/30 border-white/10 text-muted-foreground"
                 }`}>
+                  {step.icon || defaultIcons[index] || <span className="h-4 w-4" />}
                   <span className="font-medium">{step.label}</span>
                 </div>
                 {index < steps.length - 1 && (
@@ -46,7 +54,7 @@ export function MidCTA({ title, ctaText, ctaHref, steps }: MidCTAProps) {
             <Button
               asChild
               size="lg"
-              className="bg-gradient-to-r from-[#2dd4bf] to-[#14b8a6] text-black hover:opacity-90 font-semibold rounded-full px-10 py-6 text-base shadow-lg shadow-[#2dd4bf]/20 transition-all hover:scale-105"
+              className="bg-accent text-accent-foreground hover:opacity-90 font-semibold rounded-full px-10 py-6 text-base shadow-lg shadow-accent/20 transition-all hover:scale-105"
             >
               <Link href={ctaHref}>{ctaText}</Link>
             </Button>
@@ -55,7 +63,7 @@ export function MidCTA({ title, ctaText, ctaHref, steps }: MidCTAProps) {
       </div>
       
       {/* Decorative gradient */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 -z-10 h-[300px] w-[300px] rounded-full bg-[#2dd4bf]/5 blur-[100px]" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 -z-10 h-[300px] w-[300px] rounded-full bg-accent/5 blur-[100px]" />
     </section>
   );
 }

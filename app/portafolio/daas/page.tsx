@@ -1,6 +1,7 @@
 
 import { Hero } from "@/components/portafolio/shared/hero";
 import { KPIStrip } from "@/components/portafolio/shared/kpi-strip";
+import { FlipCardGrid } from "@/components/portafolio/shared/flip-card-grid";
 import { FeatureGrid } from "@/components/portafolio/shared/feature-grid";
 import { Stepper } from "@/components/portafolio/shared/stepper";
 import { TabsSection } from "@/components/portafolio/shared/tabs-section";
@@ -8,7 +9,7 @@ import { AccordionSection } from "@/components/portafolio/shared/accordion-secti
 import { CTABanner } from "@/components/portafolio/shared/cta-banner";
 import { PortfolioForm } from "@/components/portafolio/shared/portfolio-form";
 import { ImageHighlight } from "@/components/portafolio/shared/image-highlight";
-import { Globe, DollarSign, Headphones, Clock } from "lucide-react";
+import { Globe, DollarSign, Headphones, Clock, Monitor, Laptop } from "lucide-react";
 
 export const metadata = {
   title: "Soluciones DaaS | MacPower",
@@ -20,6 +21,37 @@ const kpis = [
   { value: "+25 años", label: "De experiencia" },
   { value: "+1000", label: "Proyectos ejecutados" },
   { value: "8 Países", label: "Presencia regional" },
+];
+
+const daasExplanation = [
+  { 
+    title: "¿Qué es DaaS?", 
+    icon: <Monitor className="h-8 w-8" />, 
+    frontDescription: "Device-as-a-Service: Tecnología moderna sin inversión inicial.",
+    backTitle: "Device-as-a-Service Explicado",
+    backDescription: "DaaS significa 'Dispositivo como Servicio'. Es un modelo donde rentas computadores, laptops y equipos tecnológicos en lugar de comprarlos.",
+    backBullets: [
+      "Pagas una mensualidad fija por cada equipo",
+      "Sin inversión inicial de capital (CAPEX)",
+      "Incluye mantenimiento, soporte y reemplazo",
+      "Renueva tu tecnología cada 2-3 años",
+      "Deducible de impuestos como gasto operativo"
+    ]
+  },
+  { 
+    title: "Beneficios del Modelo", 
+    icon: <Laptop className="h-8 w-8" />, 
+    frontDescription: "Más que renta: Un servicio completo de gestión tecnológica.",
+    backTitle: "¿Por qué elegir DaaS?",
+    backDescription: "El modelo DaaS transforma cómo las empresas gestionan su tecnología, eliminando dolores de cabeza y mejorando la eficiencia.",
+    backBullets: [
+      "Tecnología siempre actualizada sin obsolescencia",
+      "Predictibilidad financiera con pagos mensuales fijos",
+      "Sin preocupaciones por reparaciones o fallas",
+      "Tu equipo TI se enfoca en proyectos estratégicos",
+      "Mejora la satisfacción de empleados con equipos modernos"
+    ]
+  },
 ];
 
 const valueProps = [
@@ -67,7 +99,7 @@ const terms = [
 
 export default function DaaSPage() {
   return (
-    <>
+    <div className="daas-theme">
       <Hero
         title="Soluciones DaaS"
         subtitle="Tecnología bajo control, continuidad sin interrupciones."
@@ -78,8 +110,13 @@ export default function DaaSPage() {
         imageSrc="/images/portafolio/daas/hero.jpg"
       />
       
-      <KPIStrip kpis={kpis} />
-      
+      <FlipCardGrid 
+        title="Entendiendo DaaS"
+        subtitle="Click en las tarjetas para descubrir más detalles sobre este modelo de servicio"
+        features={daasExplanation} 
+        columns={2} 
+      />
+
       <FeatureGrid 
         title="Propuesta de Valor" 
         features={valueProps} 
@@ -114,6 +151,6 @@ export default function DaaSPage() {
       />
 
       <PortfolioForm />
-    </>
+    </div>
   );
 }

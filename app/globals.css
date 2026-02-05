@@ -164,6 +164,36 @@
   animation: pulse-slow 6s ease-in-out infinite;
 }
 
+/* Business Unit Colors */
+:root {
+  /* DaaS Unit - Warm Amber/Orange tones */
+  --daas-accent: oklch(0.68 0.15 45);
+  --daas-accent-foreground: oklch(0.15 0.02 250);
+  
+  /* Valor IT Unit - Cool Blue/Cyan tones */
+  --valor-it-accent: oklch(0.65 0.1 200);
+  --valor-it-accent-foreground: oklch(0.98 0 0);
+}
+
+.dark {
+  --daas-accent: oklch(0.72 0.18 40);
+  --daas-accent-foreground: oklch(0.15 0.02 250);
+  
+  --valor-it-accent: oklch(0.7 0.12 195);
+  --valor-it-accent-foreground: oklch(0.15 0.02 250);
+}
+
+/* Business Unit Theme Classes */
+.daas-theme {
+  --accent: var(--daas-accent);
+  --accent-foreground: var(--daas-accent-foreground);
+}
+
+.valor-it-theme {
+  --accent: var(--valor-it-accent);
+  --accent-foreground: var(--valor-it-accent-foreground);
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;
