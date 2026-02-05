@@ -25,7 +25,10 @@ function FlipCard({ feature }: { feature: FlipCardFeature }) {
 
   return (
     <div 
-      className="flip-card-container group perspective-1000 h-[320px] cursor-pointer"
+      className={cn(
+        "flip-card-container group perspective-1000 h-[320px] cursor-pointer",
+        isFlipped && "z-50"
+      )}
       onClick={() => setIsFlipped(!isFlipped)}
       onKeyDown={(e) => {
         if (e.key === 'Enter' || e.key === ' ') {

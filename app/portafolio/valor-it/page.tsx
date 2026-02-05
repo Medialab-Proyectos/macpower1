@@ -133,7 +133,7 @@ const faqs = [
 
 export default function ValorITPage() {
   return (
-    <>
+    <div className="valor-it-theme">
       <Hero
         title="Soluciones IT (Valor IT)"
         subtitle="Infraestructura robusta + ciberseguridad + continuidad."
@@ -143,8 +143,6 @@ export default function ValorITPage() {
         secondaryCtaHref="#contacto"
         imageSrc="/images/portafolio/valor-it/hero.jpg"
       />
-      
-      <KPIStrip kpis={kpis} />
       
       <FlipCardGrid 
         title="Nuestras Soluciones IT Explicadas"
@@ -192,6 +190,6 @@ export default function ValorITPage() {
       />
 
       <PortfolioForm />
-    </>
+    </div>
   );
 }

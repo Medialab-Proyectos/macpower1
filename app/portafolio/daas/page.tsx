@@ -99,7 +99,7 @@ const terms = [
 
 export default function DaaSPage() {
   return (
-    <>
+    <div className="daas-theme">
       <Hero
         title="Soluciones DaaS"
         subtitle="Tecnología bajo control, continuidad sin interrupciones."
@@ -109,8 +109,6 @@ export default function DaaSPage() {
         secondaryCtaHref="#contacto"
         imageSrc="/images/portafolio/daas/hero.jpg"
       />
-      
-      <KPIStrip kpis={kpis} />
       
       <FlipCardGrid 
         title="Entendiendo DaaS"
@@ -153,6 +151,6 @@ export default function DaaSPage() {
       />
 
       <PortfolioForm />
-    </>
+    </div>
   );
 }

@@ -11,6 +11,8 @@ interface StepperProps {
 }
 
 export function Stepper({ title, steps }: StepperProps) {
+  const gridCols = steps.length === 5 ? "lg:grid-cols-5" : "lg:grid-cols-4";
+  
   return (
     <section className="py-16 md:py-20 lg:py-24 bg-gradient-to-b from-muted/10 to-transparent">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
@@ -21,9 +23,9 @@ export function Stepper({ title, steps }: StepperProps) {
         )}
         <div className="relative">
           {/* Connecting line (desktop) */}
-          <div className="hidden md:block absolute top-[32px] left-[12%] right-[12%] h-[3px] bg-gradient-to-r from-accent/20 via-accent/50 to-accent/20 rounded-full z-0" />
+          <div className={`hidden lg:block absolute top-[32px] h-[3px] bg-gradient-to-r from-accent/20 via-accent/50 to-accent/20 rounded-full z-0 ${steps.length === 5 ? 'left-[10%] right-[10%]' : 'left-[12%] right-[12%]'}`} />
           
-          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4 relative z-10">
+          <div className={`grid gap-6 md:gap-8 md:grid-cols-2 ${gridCols} relative z-10`}>
             {steps.map((step, index) => (
               <div 
                 key={index} 
