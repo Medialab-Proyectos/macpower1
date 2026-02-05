@@ -55,10 +55,30 @@ const daasExplanation = [
 ];
 
 const valueProps = [
-  { title: "Cobertura", icon: <Globe className="h-8 w-8" />, description: "Servicio en +20 ciudades." },
-  { title: "Precio", icon: <DollarSign className="h-8 w-8" />, description: "Tarifas competitivas fijas." },
-  { title: "Soporte", icon: <Headphones className="h-8 w-8" />, description: "Mesa de ayuda especializada." },
-  { title: "Disponibilidad", icon: <Clock className="h-8 w-8" />, description: "SLA garantizados." },
+  { 
+    title: "Cobertura", 
+    icon: <Globe className="h-8 w-8" />, 
+    description: "Servicio en +20 ciudades.",
+    imageSrc: "/images/portafolio/daas/coverage.jpg"
+  },
+  { 
+    title: "Precio", 
+    icon: <DollarSign className="h-8 w-8" />, 
+    description: "Tarifas competitivas fijas.",
+    imageSrc: "/images/portafolio/daas/pricing.jpg"
+  },
+  { 
+    title: "Soporte", 
+    icon: <Headphones className="h-8 w-8" />, 
+    description: "Mesa de ayuda especializada.",
+    imageSrc: "/images/portafolio/daas/support.jpg"
+  },
+  { 
+    title: "Disponibilidad", 
+    icon: <Clock className="h-8 w-8" />, 
+    description: "SLA garantizados.",
+    imageSrc: "/images/portafolio/daas/availability.jpg"
+  },
 ];
 
 const stepperSteps = [
