@@ -25,10 +25,7 @@ function FlipCard({ feature }: { feature: FlipCardFeature }) {
 
   return (
     <div 
-      className={cn(
-        "flip-card-container group perspective-1000 cursor-pointer",
-        isFlipped ? "h-[420px] z-50" : "h-[320px] z-10"
-      )}
+      className="flip-card-container group perspective-1000 cursor-pointer h-[420px] relative"
       onClick={() => setIsFlipped(!isFlipped)}
       onKeyDown={(e) => {
         if (e.key === 'Enter' || e.key === ' ') {
@@ -41,8 +38,8 @@ function FlipCard({ feature }: { feature: FlipCardFeature }) {
       aria-label={`${feature.title}. Click to ${isFlipped ? 'see overview' : 'learn more'}`}
     >
       <div className={cn(
-        "flip-card-inner relative w-full h-full transition-all duration-700 transform-style-3d",
-        isFlipped && "rotate-y-180"
+        "flip-card-inner absolute inset-0 w-full h-full transition-all duration-700 transform-style-3d",
+        isFlipped && "rotate-y-180 z-50"
       )}>
         {/* Front of card */}
         <Card className={cn(
