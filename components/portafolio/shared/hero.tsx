@@ -59,7 +59,7 @@ export function Hero({
 
           {/* Image Content */}
           <div className="relative mx-auto w-full lg:mx-0">
-            <div className={`aspect-[4/3] w-full overflow-hidden rounded-3xl border border-white/10 shadow-2xl ${!imageSrc ? fallbackGradient : ''}`}>
+            <div className={`relative aspect-[4/3] w-full overflow-hidden rounded-3xl border border-white/10 shadow-2xl ${!imageSrc ? fallbackGradient : ''}`}>
               {imageSrc ? (
                  <Image
                   src={imageSrc}
