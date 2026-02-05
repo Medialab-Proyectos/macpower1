@@ -31,7 +31,7 @@ function FlipCard({ feature }: { feature: FlipCardFeature }) {
       )}
       style={{ 
         perspective: '1000px',
-        height: '380px'
+        height: '480px'
       }}
       onClick={() => setIsFlipped(!isFlipped)}
       onKeyDown={(e) => {
@@ -99,19 +99,18 @@ function FlipCard({ feature }: { feature: FlipCardFeature }) {
             height: '100%',
             backfaceVisibility: 'hidden',
             WebkitBackfaceVisibility: 'hidden',
-            transform: 'rotateY(180deg)',
-            overflow: 'hidden'
+            transform: 'rotateY(180deg)'
           }}
         >
-          <div className="flex-1 overflow-y-auto">
-            <h3 className="text-lg lg:text-xl font-bold mb-3 text-accent">
+          <div className="flex-1">
+            <h3 className="text-lg lg:text-xl font-bold mb-2 text-accent">
               {feature.backTitle || feature.title}
             </h3>
-            <p className="text-sm leading-relaxed mb-3 text-pretty text-foreground/90">
+            <p className="text-sm leading-relaxed mb-2 text-pretty text-foreground/90">
               {feature.backDescription}
             </p>
             {feature.backBullets && feature.backBullets.length > 0 && (
-              <ul className="space-y-1.5 text-sm">
+              <ul className="space-y-1 text-sm">
                 {feature.backBullets.map((bullet, idx) => (
                   <li key={idx} className="flex items-start gap-2">
                     <svg className="w-4 h-4 text-accent mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -123,7 +122,7 @@ function FlipCard({ feature }: { feature: FlipCardFeature }) {
               </ul>
             )}
           </div>
-          <div className="flex items-center gap-2 text-sm text-accent font-medium pt-3 border-t border-accent/20 mt-2">
+          <div className="flex items-center gap-2 text-sm text-accent font-medium pt-2 border-t border-accent/20 mt-auto">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <path d="M19 12H5"/>
               <path d="m12 19-7-7 7-7"/>
