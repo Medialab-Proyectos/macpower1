@@ -26,8 +26,8 @@ function FlipCard({ feature }: { feature: FlipCardFeature }) {
   return (
     <div 
       className={cn(
-        "flip-card-container group perspective-1000 h-[320px] cursor-pointer",
-        isFlipped && "z-50"
+        "flip-card-container group perspective-1000 cursor-pointer",
+        isFlipped ? "h-[420px] z-50" : "h-[320px] z-10"
       )}
       onClick={() => setIsFlipped(!isFlipped)}
       onKeyDown={(e) => {
@@ -124,7 +124,7 @@ function FlipCard({ feature }: { feature: FlipCardFeature }) {
 
 export function FlipCardGrid({ title, subtitle, features, columns = 4 }: FlipCardGridProps) {
   return (
-    <section className="py-16 md:py-20 lg:py-24">
+    <section className="py-16 md:py-20 lg:py-24 relative">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
         {title && (
           <div className="mb-12 lg:mb-16 text-center">
@@ -139,7 +139,7 @@ export function FlipCardGrid({ title, subtitle, features, columns = 4 }: FlipCar
           </div>
         )}
         <div className={cn(
-          "grid gap-6 md:gap-8",
+          "grid gap-6 md:gap-8 relative",
           columns === 2 && "sm:grid-cols-2",
           columns === 3 && "sm:grid-cols-2 lg:grid-cols-3",
           columns === 4 && "sm:grid-cols-2 lg:grid-cols-4"

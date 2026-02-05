@@ -1,10 +1,12 @@
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
+import Image from "next/image";
 
 interface Feature {
   title: string;
   description?: string;
   icon?: React.ReactNode;
+  imageSrc?: string;
 }
 
 interface FeatureGridProps {
@@ -30,6 +32,19 @@ export function FeatureGrid({ title, features, columns = 4 }: FeatureGridProps) 
         )}>
           {features.map((feature, index) => (
             <Card key={index} className="group relative bg-card/50 border-border/50 backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:bg-card hover:border-accent/50 hover:shadow-xl hover:shadow-accent/10 overflow-hidden">
+              {/* Background image if provided */}
+              {feature.imageSrc && (
+                <div className="absolute inset-0 opacity-10 group-hover:opacity-20 transition-opacity duration-300">
+                  <Image 
+                    src={feature.imageSrc} 
+                    alt={feature.title} 
+                    fill 
+                    className="object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-card via-card/50 to-transparent" />
+                </div>
+              )}
+              
               {/* Gradient overlay on hover */}
               <div className="absolute inset-0 bg-gradient-to-br from-accent/5 via-transparent to-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
               
