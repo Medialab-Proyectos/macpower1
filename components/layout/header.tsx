@@ -35,7 +35,7 @@ const navigation = [
     children: [
       { name: "Soluciones IT", href: "/portafolio/valor-it", icon: ShieldCheck },
       { name: "Soluciones DaaS", href: "/portafolio/daas", icon: Cloud },
-      { name: "LabPower", href: "#", icon: FlaskConical },
+      { name: "LabPower", href: "/labpower", icon: FlaskConical },
     ],
   },
   {
