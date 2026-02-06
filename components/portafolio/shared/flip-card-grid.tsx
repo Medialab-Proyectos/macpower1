@@ -31,7 +31,7 @@ function FlipCard({ feature }: { feature: FlipCardFeature }) {
       )}
       style={{ 
         perspective: '1000px',
-        height: '420px'
+        height: '340px'
       }}
       onClick={() => setIsFlipped(!isFlipped)}
       onKeyDown={(e) => {

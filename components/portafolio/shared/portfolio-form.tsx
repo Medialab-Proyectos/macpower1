@@ -53,8 +53,8 @@ export function PortfolioForm() {
       <section id="contacto" className="py-16 md:py-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-2xl">
           <div className="rounded-3xl bg-gradient-to-br from-card/80 to-card/40 backdrop-blur-xl p-12 text-center border border-white/10 shadow-xl">
-            <div className="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-full bg-[#2dd4bf]/20 shadow-lg shadow-[#2dd4bf]/30">
-              <CheckCircle className="h-10 w-10 text-[#2dd4bf]" />
+            <div className="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-full bg-accent/20 shadow-lg shadow-accent/30">
+              <CheckCircle className="h-10 w-10 text-accent" />
             </div>
             <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-3">¡Gracias!</h3>
             <p className="text-lg text-muted-foreground">
@@ -143,7 +143,7 @@ export function PortfolioForm() {
           <Button 
             type="submit" 
             size="lg"
-            className="w-full bg-gradient-to-r from-[#2dd4bf] to-[#14b8a6] text-black hover:opacity-90 font-semibold text-base py-6 shadow-lg shadow-[#2dd4bf]/20 transition-all hover:scale-105" 
+            className="w-full bg-accent text-accent-foreground hover:opacity-90 font-semibold text-base py-6 shadow-lg shadow-accent/20 transition-all hover:scale-105" 
             disabled={isSubmitting}
           >
             {isSubmitting ? <Loader2 className="animate-spin h-5 w-5" /> : "Enviar solicitud"}
