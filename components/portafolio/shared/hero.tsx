@@ -21,7 +21,7 @@ export function Hero({
   secondaryCtaText,
   secondaryCtaHref,
   imageSrc,
-  fallbackGradient = "bg-gradient-to-br from-[#2dd4bf]/20 to-purple-500/20"
+  fallbackGradient = "bg-gradient-to-br from-accent/20 to-accent/10"
 }: HeroProps) {
   return (
     <section className="relative overflow-hidden pt-24 pb-16 lg:pt-32 lg:pb-20">
@@ -31,7 +31,7 @@ export function Hero({
           {/* Text Content */}
           <div className="flex flex-col items-start space-y-6 lg:space-y-8">
             <h1 className="text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl xl:text-7xl text-balance">
-              <span className="bg-clip-text text-transparent bg-gradient-to-r from-white via-white to-[#2dd4bf]">
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-white via-white to-accent">
                 {title}
               </span>
             </h1>
@@ -42,7 +42,7 @@ export function Hero({
               <Button
                 asChild
                 size="lg"
-                className="w-full sm:w-auto bg-gradient-to-r from-[#2dd4bf] to-[#14b8a6] text-black hover:opacity-90 font-semibold rounded-full px-8 py-6 text-base shadow-lg shadow-[#2dd4bf]/20 transition-all hover:shadow-xl hover:shadow-[#2dd4bf]/30"
+                className="w-full sm:w-auto bg-accent text-accent-foreground hover:opacity-90 font-semibold rounded-full px-8 py-6 text-base shadow-lg shadow-accent/20 transition-all hover:shadow-xl hover:shadow-accent/30"
               >
                 <Link href={primaryCtaHref}>{primaryCtaText}</Link>
               </Button>
@@ -77,15 +77,15 @@ export function Hero({
             </div>
             
              {/* Decorative blob behind image */}
-             <div className="absolute -top-12 -right-12 -z-10 h-[350px] w-[350px] rounded-full bg-[#2dd4bf]/20 blur-[100px]" />
-             <div className="absolute -bottom-12 -left-12 -z-10 h-[300px] w-[300px] rounded-full bg-purple-500/10 blur-[100px]" />
+             <div className="absolute -top-12 -right-12 -z-10 h-[350px] w-[350px] rounded-full bg-accent/20 blur-[100px]" />
+             <div className="absolute -bottom-12 -left-12 -z-10 h-[300px] w-[300px] rounded-full bg-accent/10 blur-[100px]" />
           </div>
         </div>
 
         {/* Decorative elements pattern background */}
         <div className="absolute top-0 left-0 -z-10 h-full w-full overflow-hidden">
-          <div className="absolute top-1/4 -left-1/4 h-[600px] w-[600px] rounded-full bg-purple-500/5 blur-[120px]" />
-          <div className="absolute top-1/2 -right-1/4 h-[500px] w-[500px] rounded-full bg-[#2dd4bf]/5 blur-[120px]" />
+          <div className="absolute top-1/4 -left-1/4 h-[600px] w-[600px] rounded-full bg-accent/5 blur-[120px]" />
+          <div className="absolute top-1/2 -right-1/4 h-[500px] w-[500px] rounded-full bg-accent/5 blur-[120px]" />
         </div>
       </div>
     </section>
